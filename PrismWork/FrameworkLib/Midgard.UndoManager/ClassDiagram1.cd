@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Work.UndoManager.TaskServiceSingleton" Collapsed="true">
+    <Position X="0.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAACAAAAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>TaskServiceSingleton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Work.UndoManager.Recorder.BaseRecorder" Collapsed="true">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAKAAACAAAAAAAAAAAEACAggAIAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Recorder\BaseRecorder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Work.UndoManager.Recorder.DefaultRecorder" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgBAFSAAAAACAAAAAAAAAAAAMSGAYAAACAAAIAAA=</HashCode>
+      <FileName>Recorder\DefaultRecorder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.UndoTask" Collapsed="true">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAEAABAAgAYAAAAAIAAAAAAAIA=</HashCode>
+      <FileName>Recorder\UndoTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.PropertyUndoTask" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAEAAEAAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Recorder\PropertyUndoTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.CompositeTaskManager" Collapsed="true">
+    <Position X="0.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAwoAAAAAAAAAAgCAAGAQAIABAAAAAQAAAAAAAABQ=</HashCode>
+      <FileName>Recorder\CompositeTaskManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Work.UndoManager.StateChangedEventArgs" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>StateChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Work.UndoManager.ITaskService" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIABAgAhAAAAAAACAADAAAAAAAAAAIAIAlAAAA=</HashCode>
+      <FileName>TaskModel\ITaskService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Work.UndoManager.Recorder.IRecordableCallback" Collapsed="true">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Recorder\IRecordableCallback.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Work.UndoManager.INotifyStateChanged" Collapsed="true">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>INotifyStateChanged.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Work.UndoManager.TaskModel.TaskEventArgs&lt;TArgument&gt;" Collapsed="true">
+    <Position X="7.25" Y="6.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAA=</HashCode>
+      <FileName>TaskModel\TaskEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.TaskBase&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="1.25" Width="1.75" />
+    <Members>
+      <Property Name="Argument" Hidden="true" />
+      <Event Name="execute" Hidden="true" />
+      <Event Name="Execute" Hidden="true" />
+      <Property Name="IInternalTask.Argument" Hidden="true" />
+      <Method Name="IInternalTask.PerformTask" Hidden="true" />
+      <Method Name="OnExecute" Hidden="true" />
+      <Method Name="PerformTask" Hidden="true" />
+      <Method Name="Repeat" Hidden="true" />
+      <Field Name="repeatable" Hidden="true" />
+      <Property Name="TaskService" Hidden="true" />
+      <Property Name="Undoable" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAIAAAAAAAAAAARAAAAEAAAAAAAwAAAAIAIABCgAAIA=</HashCode>
+      <FileName>TaskModel\TaskBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.Task&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAACAAAAA=</HashCode>
+      <FileName>TaskModel\Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.UndoableTaskEventArgs&lt;TArgument&gt;" Collapsed="true">
+    <Position X="7.25" Y="7.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TaskModel\UndoableTask\UndoableTaskEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.CompositeUndoableTask&lt;T&gt;">
+    <Position X="2.25" Y="5" Width="2.25" />
+    <Members>
+      <Method Name="CompositeUndoableTask" Hidden="true" />
+      <Field Name="descriptionForUser" Hidden="true" />
+      <Property Name="DescriptionForUser" Hidden="true" />
+      <Method Name="ExecuteInParallel" Hidden="true" />
+      <Method Name="ExecuteInternal" Hidden="true" />
+      <Method Name="ExecuteSequentially" Hidden="true" />
+      <Method Name="OnExecute" Hidden="true" />
+      <Method Name="OnUndo" Hidden="true" />
+      <Method Name="SafelyUndoTasks" Hidden="true" />
+      <Field Name="taskDictionary" Hidden="true" />
+      <Method Name="UndoInParallel" Hidden="true" />
+      <Method Name="UndoInternal" Hidden="true" />
+      <Method Name="UndoSequentially" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAABAAAgAAoAkABAAAgAQAgAAAAAAACAAAAA=</HashCode>
+      <FileName>TaskModel\UndoableTask\CompositeUndoableTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.UndoableTask&lt;T&gt;" Collapsed="true">
+    <Position X="4.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAACAAAAA=</HashCode>
+      <FileName>TaskModel\UndoableTask\UndoableTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.UndoableTaskBase&lt;T&gt;" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAgAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>TaskModel\UndoableTask\UndoableTaskBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.TaskServiceEventArgs" Collapsed="true">
+    <Position X="10.5" Y="5.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>TaskModel\TaskService\TaskServiceEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.CancellableTaskServiceEventArgs" Collapsed="true">
+    <Position X="10.5" Y="6.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>TaskModel\TaskService\TaskServiceEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.TaskService" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Work.UndoManager.TaskModel.TaskService.TaskType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TaskModel\TaskService\TaskService.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="Work.UndoManager.TaskModel.TaskService.TaskCollection&lt;T&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TaskModel\TaskService\TaskService.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>UBAAIBIQBAkAhKQBEAAQCIQjEAAEBAAAAA4AZQlMEEE=</HashCode>
+      <FileName>TaskModel\TaskService\TaskService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Work.UndoManager.TaskModel.CompositeTask&lt;T&gt;">
+    <Position X="2.25" Y="3.25" Width="1.75" />
+    <Members>
+      <Method Name="CompositeTask" Hidden="true" />
+      <Field Name="descriptionForUser" Hidden="true" />
+      <Property Name="DescriptionForUser" Hidden="true" />
+      <Method Name="ExecuteInParallel" Hidden="true" />
+      <Method Name="ExecuteInSequence" Hidden="true" />
+      <Method Name="ExecuteInternal" Hidden="true" />
+      <Method Name="OnExecute" Hidden="true" />
+      <Field Name="taskDictionary" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAKAAAAAAAAAAAgAAAAkABAAAAAQAAAAAAAAACAAAAA=</HashCode>
+      <FileName>TaskModel\CompositeTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Work.UndoManager.TaskModel.ITask" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAQAAAAAAAAACAAAAA=</HashCode>
+      <FileName>TaskModel\ITask.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Work.UndoManager.TaskModel.IUndoableTask" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TaskModel\UndoableTask\IUndoableTask.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Work.UndoManager.TaskModel.IInternalTask" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAgAAAA=</HashCode>
+      <FileName>TaskModel\IInternalTask.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Work.UndoManager.TaskModel.TaskResult">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACAAgAIAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>TaskModel\TaskResult.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
