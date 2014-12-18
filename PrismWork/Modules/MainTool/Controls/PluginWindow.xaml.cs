@@ -21,6 +21,10 @@ namespace Modules.MainTool
     public partial class PluginWindow : UserControl
     {
 
+        public Panel Parent { get; private set; }
+
+        public IPluginObject Context { get; private set; }
+
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
@@ -29,13 +33,61 @@ namespace Modules.MainTool
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(PluginWindow), new PropertyMetadata(""));
 
-        public PluginWindow(IPluginObject pluginobject)
+        public PluginWindow(Panel parent, IPluginObject pluginobject)
         {
             InitializeComponent();
+            this.Context = pluginobject;
             this.contentpresenter.Content = pluginobject.Plugin;
             this.Title = pluginobject.PluginName;
 
             this.DataContext = this;
+
+            this.Parent = parent;
+
+            this.Visibility = System.Windows.Visibility.Collapsed;
         }
+
+        private void ask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void min_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+        private void close_Clic1k(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void max_Click1(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void max_Click(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void close_Click(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
+
+        public void Show()
+        {
+            this.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        public void Close()
+        {
+            this.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
     }
 }

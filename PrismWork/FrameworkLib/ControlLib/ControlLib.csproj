@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{06F0287F-FF1D-4D9C-AE8F-5759359F5168}</ProjectGuid>
+    <ProjectGuid>{CBC9A612-1201-4233-86B1-10C66E9F9EDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImageView</RootNamespace>
-    <AssemblyName>ImageView</AssemblyName>
+    <RootNamespace>ControlLib</RootNamespace>
+    <AssemblyName>ControlLib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,14 +55,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Prism">
-      <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Interactivity">
-      <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,10 +70,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View\ImageViewUC.xaml.cs">
-      <DependentUpon>ImageViewUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ImageViewUCViewModel.cs" />
+    <Compile Include="Controls\SPDragCanvas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,23 +95,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\ImageViewUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Common\CommonHelper\CommonHelper.csproj">
       <Project>{fd27de89-d16f-4b28-84b3-e5e2eeae0636}</Project>
       <Name>CommonHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\WorkCommon\WorkCommon.csproj">
-      <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
-      <Name>WorkCommon</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FrameworkLib\ControlLib\ControlLib.csproj">
-      <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
-      <Name>ControlLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

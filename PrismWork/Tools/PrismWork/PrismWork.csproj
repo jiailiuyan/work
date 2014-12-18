@@ -164,13 +164,13 @@
       <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
       <Name>WorkCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLib\ControlLib\ControlLib.csproj">
+      <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
+      <Name>ControlLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\BottomToolBar\BottomToolBar.csproj">
       <Project>{f900b75e-c0d5-495b-ac96-604471f048cf}</Project>
       <Name>BottomToolBar</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Modules\ControlLib\ControlLib.csproj">
-      <Project>{4a956466-49e3-4b0e-a281-ec57bd176032}</Project>
-      <Name>ControlLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Modules\ImageView\ImageView.csproj">
       <Project>{06f0287f-ff1d-4d9c-ae8f-5759359f5168}</Project>

@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              d:DesignHeight="300"
              d:DesignWidth="300"
+           xmlns:controls="clr-namespace:ControlLib;assembly=ControlLib"
              mc:Ignorable="d">
     <Grid>
 
@@ -47,7 +48,7 @@
 
         </ListBox>
 
-        <Canvas x:Name="pluginview" />
+        <controls:DragCanvas x:Name="pluginview"  AllowDragOutOfView="False" />
 
     </Grid>
 </UserControl>

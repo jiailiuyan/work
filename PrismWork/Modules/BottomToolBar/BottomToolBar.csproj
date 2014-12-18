@@ -125,10 +125,6 @@
       <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
       <Name>WorkCommon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ControlLib\ControlLib.csproj">
-      <Project>{4a956466-49e3-4b0e-a281-ec57bd176032}</Project>
-      <Name>ControlLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\bottombar.png" />

@@ -30,6 +30,8 @@ namespace Modules.MainTool
     [PartCreationPolicy(CreationPolicy.Shared)]
     public partial class MainToolUC : UserControl
     {
+        public List<PluginWindow> PluginWindows = new List<PluginWindow>();
+
         public MainToolUC()
         {
             InitializeComponent();
@@ -43,11 +45,21 @@ namespace Modules.MainTool
             var itemscontrol = this.FindVisualParent<ItemsControl>();
             itemscontrol.SizeChanged += ItemsControl_SizeChanged;
             listboxview.Height = itemscontrol.ActualHeight;
+            listboxview.Width = itemscontrol.ActualWidth;
+
+            foreach (var iplugin in this.ViewModel.PluginObjects)
+            {
+                PluginWindow p = new PluginWindow(this.pluginview, iplugin);
+                this.PluginWindows.Add(p);
+                this.pluginview.Children.Add(p);
+            }
+
         }
 
         void ItemsControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            listboxview.Height = e.NewSize.Height;
+            this.pluginview.Height = this.listboxview.Height = e.NewSize.Height;
+            this.pluginview.Width = this.listboxview.Width = e.NewSize.Width;
         }
 
         [Import]
@@ -69,8 +81,11 @@ namespace Modules.MainTool
             var iplugin = button.DataContext as IPluginObject;
             if (iplugin != null)
             {
-                PluginWindow p = new PluginWindow(iplugin);
-                this.pluginview.Children.Add(p);
+                var p = this.PluginWindows.FirstOrDefault(i => i.Context.Equals(iplugin));
+                if (p != null)
+                {
+                    p.Show();
+                }
             }
         }
 

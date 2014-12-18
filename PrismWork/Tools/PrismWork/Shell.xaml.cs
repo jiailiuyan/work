@@ -32,8 +32,8 @@ namespace PrismWork
 
         void Shell_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            this.maintool.Height = e.NewSize.Height - this.bottomtoolbar.ActualHeight;
-
+            this.maintool.Height = this.gridMenu.ActualHeight - this.bottomtoolbar.ActualHeight;
+            this.maintool.Width = this.gridMenu.ActualWidth;
         }
 
         void Shell_Loaded(object sender, RoutedEventArgs e)
