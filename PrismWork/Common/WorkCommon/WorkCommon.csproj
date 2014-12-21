@@ -76,6 +76,8 @@
     <Compile Include="Behaviors\AutoPopulateExportedViewsBehavior.cs" />
     <Compile Include="Behaviors\IViewRegionRegistration.cs" />
     <Compile Include="Behaviors\ViewExportAttribute.cs" />
+    <Compile Include="Events\PluginsEvent.cs" />
+    <Compile Include="Manager\GlobalEvent.cs" />
     <Compile Include="Manager\GlobalManager.cs" />
     <Compile Include="Manager\LayoutMgr\ILayoutManager.cs" />
     <Compile Include="Manager\LayoutMgr\IShell.cs" />

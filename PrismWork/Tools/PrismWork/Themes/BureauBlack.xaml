@@ -15,7 +15,7 @@
     <SolidColorBrush x:Key="OutsideFontColor" Color="#FFFFFFFF" />
 
     <LinearGradientBrush x:Key="NormalBrush" StartPoint="0.5,0" EndPoint="0.5,1">
-        <GradientStop Offset="0" Color="#FFFFFFFF" />
+        <GradientStop Offset="0" Color="#00FFFFFF" />
         <GradientStop Offset="0.521" Color="#FFA4ADBB" />
         <GradientStop Offset="0.194" Color="#FFD7E0EA" />
         <GradientStop Offset="0.811" Color="#FFBAC1CF" />
@@ -23,27 +23,34 @@
         <GradientStop Offset="1" Color="#FFE3E4E6" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0.5,1" EndPoint="0.5,0">
-        <GradientStop Color="#FF8B8B8B" />
+        <GradientStop Color="#008B8B8B" />
         <GradientStop Offset="1" Color="#FFADADAD" />
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="NormalHighlightBrush" Color="#FFFFFFFF" />
-    <LinearGradientBrush x:Key="MouseOverBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+    <SolidColorBrush x:Key="NormalHighlightBrush" Color="#00FFFFFF" />
+
+    <SolidColorBrush x:Key="MouseOverBrush" Color="#00000000" />
+    <SolidColorBrush x:Key="MouseBackBrush" Color="#CFD4D3CA" />
+
+    <SolidColorBrush x:Key="MouseOverBorderBrush" Color="#00FFFFFF" />
+    <SolidColorBrush x:Key="MouseOverHighlightBrush" Color="#CFB3C8DA" />
+    
+    <!--<LinearGradientBrush x:Key="MouseOverBrush" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Offset="0" Color="#FFFFFFFF" />
         <GradientStop Offset="0.318" Color="#FFFEF3B5" />
         <GradientStop Offset="0.488" Color="#FFFFEB70" />
         <GradientStop Offset="0.502" Color="#FFFFD02E" />
         <GradientStop Offset="0.834" Color="#FFFFD932" />
         <GradientStop Offset="1" Color="#FFFFF48B" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="MouseOverBorderBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+    </LinearGradientBrush>-->
+    <!--<LinearGradientBrush x:Key="MouseOverBorderBrush" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Offset="0" Color="#FFEEE8CF" />
         <GradientStop Offset="0.536" Color="#FFC4AF8C" />
         <GradientStop Offset="1" Color="#FFDCD1BF" />
-    </LinearGradientBrush>
-    <LinearGradientBrush x:Key="MouseOverHighlightBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+    </LinearGradientBrush>-->
+    <!--<LinearGradientBrush x:Key="MouseOverHighlightBrush" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Offset="0" Color="#FFFFFFFB" />
         <GradientStop Offset="1" Color="#FFFEF3B5" />
-    </LinearGradientBrush>
+    </LinearGradientBrush>-->
     <LinearGradientBrush x:Key="PressedBrush" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Offset="0" Color="#FFC3BCAE" />
         <GradientStop Offset="0.046" Color="#FFFDCE9D" />
@@ -62,7 +69,7 @@
     </LinearGradientBrush>
     <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#A5FFFFFF" />
     <SolidColorBrush x:Key="DisabledBorderBrush" Color="#66FFFFFF" />
-    <SolidColorBrush x:Key="FocusBrush" Color="#FFE99862" />
+    <SolidColorBrush x:Key="FocusBrush" Color="#A9ECD6D6" />
 
     <LinearGradientBrush x:Key="ControlBackgroundBrush" StartPoint="0.056,0.5" EndPoint="1.204,0.5">
         <GradientStop Offset="0" Color="#FFFFFFFF" />
@@ -308,7 +315,7 @@
         <Setter Property="Foreground" Value="#FF042271" />
         <Setter Property="FontFamily" Value="Trebuchet MS" />
         <Setter Property="FontSize" Value="12" />
-        <Setter Property="Padding" Value="3" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="Template" Value="{DynamicResource ButtonTemplate}" />
     </Style>
 
@@ -385,27 +392,29 @@
         </ControlTemplate.Resources>
         <Grid x:Name="Grid">
             <Border x:Name="BackgroundNorm"
-                    Background="{DynamicResource NormalBrush}"
-                    BorderBrush="{DynamicResource NormalBorderBrush}"
-                    BorderThickness="1"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
                     CornerRadius="1.75" />
             <Border x:Name="BackgroundNorm_highlight"
                     Margin="1"
-                    BorderBrush="{DynamicResource NormalHighlightBrush}"
-                    BorderThickness="1,0,1,1"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
                     CornerRadius="1"
                     Opacity="0.65" />
+            <!--BorderBrush="{DynamicResource MouseOverBorderBrush}"    -->
             <Border x:Name="BackgroundOver"
-                    Background="{DynamicResource MouseOverBrush}"
-                    BorderBrush="{DynamicResource MouseOverBorderBrush}"
+                   Background="{DynamicResource MouseBackBrush}"
+                  
                     BorderThickness="1"
-                    CornerRadius="1.75"
+                    CornerRadius="0"
                     Opacity="0" />
+            <!--内边框-->
             <Border x:Name="BackgroundOver_Highlight"
-                    Margin="1"
+                    Margin="0"
                     BorderBrush="{DynamicResource MouseOverHighlightBrush}"
-                    BorderThickness="1,0,1,1"
-                    CornerRadius="1"
+                    BorderThickness="1"
+                    CornerRadius="0"
                     Opacity="0" />
             <Border x:Name="BackgroundPressed"
                     Background="{DynamicResource PressedBrush}"
@@ -440,10 +449,11 @@
                        Foreground="#FF8E96A2"
                        Text="{TemplateBinding Content}"
                        Visibility="Collapsed" />
+            <!--选中后边框-->
             <Border x:Name="FocusVisualElement"
-                    Margin="-1"
+                    Margin="0"
                     BorderBrush="{DynamicResource FocusBrush}"
-                    BorderThickness="1"
+                    BorderThickness="0"
                     CornerRadius="2.75"
                     IsHitTestVisible="false"
                     Opacity="0" />

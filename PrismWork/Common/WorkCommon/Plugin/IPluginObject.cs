@@ -10,11 +10,27 @@ namespace WorkCommon.Plugin
     public interface IPluginObject
     {
 
-        string PluginName { get;  }
+        string PluginName { get; }
 
         ImageSource PluginIcon { get; }
 
         FrameworkElement Plugin { get; }
+
+        PluginType Type { get; }
+
+        event EventHandler Opening;
+
+        event EventHandler Closing;
+
+        event EventHandler Hiding;
+
+        bool IsShow { get; set; }
+    }
+
+    public enum PluginType
+    {
+        Window,
+        Plugin
 
     }
 }

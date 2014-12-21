@@ -83,10 +83,17 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\MenueUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\BottomToolBarUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Controls\MenueUserControl.xaml.cs">
+      <DependentUpon>MenueUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BottomToolBarUC.xaml.cs">
       <DependentUpon>BottomToolBarUC.xaml</DependentUpon>
     </Compile>
@@ -125,10 +132,34 @@
       <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
       <Name>WorkCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLib\DevComponents.WPF.Controls\DevComponents.WPF.Controls.csproj">
+      <Project>{bdc8b141-2b47-4f2e-9f94-4d22cb364c38}</Project>
+      <Name>DevComponents.WPF.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLib\DevComponents.WPF.Metro\DevComponents.WPF.Metro.csproj">
+      <Project>{37cac627-6bdb-42a2-9002-351c408002d4}</Project>
+      <Name>DevComponents.WPF.Metro</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\bottombar.png" />
     <Resource Include="Images\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\11.png" />
+    <Resource Include="Images\22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\m1.png" />
+    <Resource Include="Images\m2.png" />
+    <Resource Include="Images\m3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\s1.png" />
+    <Resource Include="Images\s2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\m4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

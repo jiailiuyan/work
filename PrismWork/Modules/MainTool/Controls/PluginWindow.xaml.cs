@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WorkCommon.Events;
+using WorkCommon.Manager;
 using WorkCommon.Plugin;
 
 namespace Modules.MainTool
@@ -33,7 +35,7 @@ namespace Modules.MainTool
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(PluginWindow), new PropertyMetadata(""));
 
-        public PluginWindow(Panel parent, IPluginObject pluginobject)
+        public PluginWindow(IPluginObject pluginobject)
         {
             InitializeComponent();
             this.Context = pluginobject;
@@ -42,9 +44,40 @@ namespace Modules.MainTool
 
             this.DataContext = this;
 
-            this.Parent = parent;
-
             this.Visibility = System.Windows.Visibility.Collapsed;
+
+            if (pluginobject.Type == PluginType.Window)
+            {
+                this.titlgrid.Visibility = System.Windows.Visibility.Visible;
+            }
+
+            pluginobject.Opening += PluginWindow_Opening;
+            pluginobject.Closing += pluginobject_Closing;
+            pluginobject.Hiding += pluginobject_Hiding;
+
+            GlobalEvent.Instance.RaisePluginChange(new PluginsEventArgs() { Action = PluginAction.Add, PluginObject = this.Context });
+
+            this.IsVisibleChanged += PluginWindow_IsVisibleChanged;
+        }
+
+        void PluginWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            this.Context.Plugin.Visibility = (bool)e.NewValue ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        void PluginWindow_Opening(object sender, EventArgs e)
+        {
+            ShowPlugin(false);
+        }
+
+        void pluginobject_Closing(object sender, EventArgs e)
+        {
+            DeletePlugin();
+        }
+
+        void pluginobject_Hiding(object sender, EventArgs e)
+        {
+            ClosePlugin();
         }
 
         private void ask_Click(object sender, RoutedEventArgs e)
@@ -54,10 +87,8 @@ namespace Modules.MainTool
 
         private void min_Click(object sender, RoutedEventArgs e)
         {
-
+            ClosePlugin();
         }
-
-
 
         private void close_Clic1k(object sender, RoutedEventArgs e)
         {
@@ -76,17 +107,28 @@ namespace Modules.MainTool
 
         private void close_Click(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            DeletePlugin();
         }
 
-        public void Show()
+        public void ShowPlugin(bool issent = true)
         {
             this.Visibility = System.Windows.Visibility.Visible;
+            if (issent)
+            {
+                GlobalEvent.Instance.RaisePluginChange(new PluginsEventArgs() { Action = PluginAction.Show, PluginObject = this.Context });
+            }
         }
 
-        public void Close()
+        public void DeletePlugin()
         {
             this.Visibility = System.Windows.Visibility.Collapsed;
+            GlobalEvent.Instance.RaisePluginChange(new PluginsEventArgs() { Action = PluginAction.Delete, PluginObject = this.Context });
+        }
+
+        public void ClosePlugin()
+        {
+            this.Visibility = System.Windows.Visibility.Collapsed;
+            GlobalEvent.Instance.RaisePluginChange(new PluginsEventArgs() { Action = PluginAction.Close, PluginObject = this.Context });
         }
 
     }

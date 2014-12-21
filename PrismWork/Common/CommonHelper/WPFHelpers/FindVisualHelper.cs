@@ -32,7 +32,7 @@ using System.Windows.Media;
 
 namespace Jisons
 {
-    public static class  FindVisualHelper
+    public static class FindVisualHelper
     {
 
         /// <summary> 向上查找指定类型的逻辑容器 </summary>
@@ -40,7 +40,7 @@ namespace Jisons
         /// <param name="descendent">查找的子容器</param>
         /// <param name="isContainsSelf">查找是否包含自身</param>
         /// <returns>返回第一个查找到的父控件 T?</returns>
-        public static T FindVisualParent<T>(this DependencyObject descendent, bool isContainsSelf = true) where T : DependencyObject
+        public static T FindVisualParent<T>(this DependencyObject descendent, bool isContainsSelf = true) where T : class
         {
             T ancestor = null;
             DependencyObject scan = isContainsSelf ? descendent : VisualTreeHelper.GetParent(descendent);
@@ -50,6 +50,34 @@ namespace Jisons
                 scan = VisualTreeHelper.GetParent(scan);
             }
             return ancestor;
+        }
+
+        public static bool? FindFirstVisualParent<T, R>(this DependencyObject descendent, bool isContainsSelf = true)
+            where T : class
+            where R : class
+        {
+            T ancestorT = null;
+            R ancestorR = null;
+            DependencyObject scan = isContainsSelf ? descendent : VisualTreeHelper.GetParent(descendent);
+
+            while (scan != null && (((ancestorT) == null) && ((ancestorR) == null)))
+            {
+                scan = VisualTreeHelper.GetParent(scan);
+                if (scan != null)
+                {
+                    var ir = scan.GetType().GetInterface(typeof(T).Name, true);
+                    if (ir != null)
+                    {
+                        return true;
+                    }
+                    var it = scan.GetType().GetInterface(typeof(R).Name, true);
+                    if (it != null)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return null;
         }
 
         /// <summary> 查找指定类型的子物体 </summary>

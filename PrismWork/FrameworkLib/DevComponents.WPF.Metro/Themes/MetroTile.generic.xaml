@@ -1,0 +1,220 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctrls="clr-namespace:DevComponents.WPF.Controls;assembly=DevComponents.WPF.Controls"
+                    xmlns:m="clr-namespace:DevComponents.WPF.Metro">
+    
+    <Style TargetType="m:MetroTileFramesPresenter">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:MetroTileFramesPresenter">
+                    <Grid IsItemsHost="True" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="m:MetroTileFrame">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="ContentTemplate" Value="{Binding RelativeSource={RelativeSource AncestorType=m:MetroTile}, Path=ContentTemplate}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=m:MetroTile}, Path=VerticalContentAlignment}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding RelativeSource={RelativeSource AncestorType=m:MetroTile}, Path=HorizontalContentAlignment}" />
+        <Setter Property="Padding" Value="{Binding RelativeSource={RelativeSource AncestorType=m:MetroTile}, Path=Padding}" />
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=m:MetroTile}, Path=Foreground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:MetroTileFrame">
+                    <Border Name="MainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                        <Grid Name="InnerGrid" Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image Name="Image" Stretch="None" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Source="{TemplateBinding ImageSource}" />
+                            <ContentPresenter Grid.Column="1" Margin="5,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                            <ContentPresenter Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{TemplateBinding Title}" ContentTemplate="{TemplateBinding TitleTemplate}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="Image" Property="Grid.ColumnSpan" Value="2" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="m:MetroTile">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="88" />
+        <Setter Property="Width" Value="178" />
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" TextWrapping="Wrap" FontSize="16" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:MetroTile">
+                    <m:Content3D x:Name="Content3D" Background="Transparent">
+                        <m:Content3D.Transform3D>
+                            <Transform3DGroup>
+                                <RotateTransform3D x:Name="RotateRightInwards">
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D Angle="0" Axis="0,1,0" />
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
+                                <RotateTransform3D x:Name="RotateLeftInwards">
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D Angle="0" Axis="0,-1,0" />
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
+                                <RotateTransform3D x:Name="RotateTopInwards">
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D Angle="0" Axis="-1,0,0" />
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
+                                <RotateTransform3D x:Name="RotateBottomInwards">
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D Angle="0" Axis="1,0,0" />
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
+                            </Transform3DGroup>
+                        </m:Content3D.Transform3D>
+                        <Grid>
+                            <Grid.RenderTransform>
+                                <ScaleTransform x:Name="ScaleTransform" />
+                            </Grid.RenderTransform>
+                            <Border Name="HighlightBorder" Opacity="0" Margin="-3" BorderThickness="3" BorderBrush="{DynamicResource {x:Static m:MetroColors.CanvasLightBrushKey}}" />
+
+                            <Border Name="Bdr" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="True">
+                                <Grid>
+                                    <m:MetroTileFrame x:Name="SingleFrame" Title="{TemplateBinding Title}" TitleTemplate="{TemplateBinding TitleTemplate}" 
+                                                      ImageSource="{TemplateBinding ImageSource}" TileColor="None" Background="Transparent"
+                                                      Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" />
+                                    <m:MetroTileFramesPresenter x:Name="FramesPresenter" ItemsSource="{TemplateBinding FramesSource}" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HighlightBorder" Storyboard.TargetProperty="Opacity" To="0" Duration="00:00:00.05" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HighlightBorder" Storyboard.TargetProperty="Opacity" To="1" Duration="00:00:00.05" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="HighlightBorder" Storyboard.TargetProperty="Opacity" To="1" Duration="00:00:00" />
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX" To="0.95" Duration="00:00:00.07" />
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY" To="0.95" Duration="00:00:00.07" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup Name="DropTargetStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="DropOnBottom" To="NoDrop" GeneratedDuration="00:00:00.3">
+                                        <Storyboard m:Content3D.Is3DStoryboard="True">
+                                            <DoubleAnimation Storyboard.TargetName="RotateBottomInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.3" From="20" To="0" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropOnBottom" To="DropOnTop" GeneratedDuration="00:00:00.3">
+                                        <Storyboard m:Content3D.Is3DStoryboard="True">
+                                            <DoubleAnimation Storyboard.TargetName="RotateBottomInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.15" From="20" To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="RotateTopInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" BeginTime="00:00:00.15" Duration="00:00:00.15" To="20" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropOnTop" To="NoDrop" GeneratedDuration="00:00:00.3">
+                                        <Storyboard m:Content3D.Is3DStoryboard="True">
+                                            <DoubleAnimation Storyboard.TargetName="RotateTopInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.3" From="20" To="0" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropOnTop" To="DropOnBottom" GeneratedDuration="00:00:00.3">
+                                        <Storyboard m:Content3D.Is3DStoryboard="True">
+                                            <DoubleAnimation Storyboard.TargetName="RotateTopInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.15" From="20" To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="RotateBottomInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" BeginTime="00:00:00.15" Duration="00:00:00.15" From="0" To="20" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropOnLeft" To="NoDrop" GeneratedDuration="00:00:00.3">
+                                        <Storyboard m:Content3D.Is3DStoryboard="True">
+                                            <DoubleAnimation Storyboard.TargetName="RotateLeftInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.3" From="20" To="0" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropOnLeft" To="DropOnRight" GeneratedDuration="00:00:00.3">
+                                        <Storyboard m:Content3D.Is3DStoryboard="True">
+                                            <DoubleAnimation Storyboard.TargetName="RotateLeftInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.15" From="20" To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="RotateRightInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" BeginTime="00:00:00.15" Duration="00:00:00.15" To="20" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropOnRight" To="NoDrop" GeneratedDuration="00:00:00.3">
+                                        <Storyboard m:Content3D.Is3DStoryboard="True">
+                                            <DoubleAnimation Storyboard.TargetName="RotateRightInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.3" From="20" To="0" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropOnRight" To="DropOnLeft" GeneratedDuration="00:00:00.3">
+                                        <Storyboard m:Content3D.Is3DStoryboard="True">
+                                            <DoubleAnimation Storyboard.TargetName="RotateRightInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.15" From="20" To="0" />
+                                            <DoubleAnimation Storyboard.TargetName="RotateLeftInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" BeginTime="00:00:00.15" Duration="00:00:00.15" To="20" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                                <VisualState Name="NoDrop" />
+                                <VisualState Name="DropOnBottom" m:Content3D.IsThreeDVisualState="True">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RotateBottomInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.3" To="20" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState Name="DropOnTop" m:Content3D.IsThreeDVisualState="True">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RotateTopInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.3" To="20" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState Name="DropOnLeft" m:Content3D.IsThreeDVisualState="True">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RotateLeftInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.3" To="20" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState Name="DropOnRight" m:Content3D.IsThreeDVisualState="True">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="RotateRightInwards" Storyboard.TargetProperty="(RotateTransform3D.Rotation).(AxisAngleRotation3D.Angle)" Duration="00:00:00.3" To="20" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup Name="DragSourceStates">
+                                <VisualState Name="IsNotDragSource" />
+                                <VisualState Name="IsDragSource">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Bdr" Storyboard.TargetProperty="Opacity" Duration="0" To="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </m:Content3D>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Type" Value="Small">
+                <Setter Property="Width" Value="84" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

@@ -168,6 +168,14 @@
       <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
       <Name>ControlLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLib\DevComponents.WPF.Controls\DevComponents.WPF.Controls.csproj">
+      <Project>{bdc8b141-2b47-4f2e-9f94-4d22cb364c38}</Project>
+      <Name>DevComponents.WPF.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLib\DevComponents.WPF.Metro\DevComponents.WPF.Metro.csproj">
+      <Project>{37cac627-6bdb-42a2-9002-351c408002d4}</Project>
+      <Name>DevComponents.WPF.Metro</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\BottomToolBar\BottomToolBar.csproj">
       <Project>{f900b75e-c0d5-495b-ac96-604471f048cf}</Project>
       <Name>BottomToolBar</Name>

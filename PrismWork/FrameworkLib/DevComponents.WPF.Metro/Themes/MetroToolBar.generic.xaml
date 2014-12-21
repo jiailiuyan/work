@@ -1,0 +1,63 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:m="clr-namespace:DevComponents.WPF.Metro"
+                    xmlns:ctrls="clr-namespace:DevComponents.WPF.Controls;assembly=DevComponents.WPF.Controls">
+
+     <Style TargetType="m:MetroToolBar">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static m:MetroColors.TextBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static m:MetroColors.CanvasBrushKey}}" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:MetroToolBar">
+                    <Canvas Width="{TemplateBinding ActualWidth}" Height="{Binding ElementName=MainItems, Path=ActualHeight}">                        
+                        <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                                Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"
+                                Width="{TemplateBinding ActualWidth}" Canvas.Top="{TemplateBinding VerticalOffset}">                            
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid Name="MainItems">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Name="ItemsHost" Orientation="Horizontal" IsItemsHost="True" />
+                                    <Button Name="ExpandButton" Grid.Column="1" Background="Transparent" VerticalContentAlignment="Top" BorderThickness="0" ctrls:ControlBehavior.CornerRadius="2">
+                                        <Path Margin="0,5,0,0" Fill="{Binding ElementName=ExpandButton, Path=Foreground}">
+                                            <Path.Data>
+                                                <GeometryGroup>
+                                                    <EllipseGeometry Center="2,2" RadiusX="2" RadiusY="2" />
+                                                    <EllipseGeometry Center="9,2" RadiusX="2" RadiusY="2" />
+                                                    <EllipseGeometry Center="16,2" RadiusX="2" RadiusY="2" />
+                                                </GeometryGroup>
+                                            </Path.Data>
+                                        </Path>
+                                    </Button>
+                                </Grid>
+                                <Canvas Name="ResizableCanvas" ClipToBounds="True" Grid.Row="1" Height="0">
+                                    <ItemsControl Name="ExtraItems" ItemsSource="{TemplateBinding ExtraItemsSource}" ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                                  Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                    </ItemsControl>
+                                </Canvas>
+                            </Grid>
+                        </Border>
+                    </Canvas>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ExpandDirection" Value="None">
+                            <Setter TargetName="ExpandButton" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

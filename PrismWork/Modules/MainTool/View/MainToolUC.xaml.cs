@@ -16,6 +16,7 @@ using WorkCommon.Behaviors;
 using WorkCommon.Manager;
 using Jisons;
 using WorkCommon.Plugin;
+using ControlLib;
 
 namespace Modules.MainTool
 {
@@ -37,29 +38,27 @@ namespace Modules.MainTool
             InitializeComponent();
 
             this.Loaded += MainToolUC_Loaded;
-
         }
 
         void MainToolUC_Loaded(object sender, RoutedEventArgs e)
         {
             var itemscontrol = this.FindVisualParent<ItemsControl>();
             itemscontrol.SizeChanged += ItemsControl_SizeChanged;
-            listboxview.Height = itemscontrol.ActualHeight;
-            listboxview.Width = itemscontrol.ActualWidth;
+            actionview.Height = itemscontrol.ActualHeight - 10;
+            actionview.Width = itemscontrol.ActualWidth - 10;
 
             foreach (var iplugin in this.ViewModel.PluginObjects)
             {
-                PluginWindow p = new PluginWindow(this.pluginview, iplugin);
-                this.PluginWindows.Add(p);
-                this.pluginview.Children.Add(p);
+                actionview.AddDragControl(iplugin);
             }
 
+            this.actionview.AddControlEvent += actionview_AddControlEvent;
         }
 
         void ItemsControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            this.pluginview.Height = this.listboxview.Height = e.NewSize.Height;
-            this.pluginview.Width = this.listboxview.Width = e.NewSize.Width;
+            this.pluginview.Height = this.actionview.Height = e.NewSize.Height - 10;
+            this.pluginview.Width = this.actionview.Width = e.NewSize.Width - 10;
         }
 
         [Import]
@@ -75,16 +74,22 @@ namespace Modules.MainTool
             }
         }
 
-        private void pluginAdd_Click(object sender, RoutedEventArgs e)
+        void actionview_AddControlEvent(object sender, AddControlArgs e)
         {
-            var button = sender as Button;
-            var iplugin = button.DataContext as IPluginObject;
+            var iplugin = e.PluginObject;
             if (iplugin != null)
             {
                 var p = this.PluginWindows.FirstOrDefault(i => i.Context.Equals(iplugin));
                 if (p != null)
                 {
-                    p.Show();
+                    p.ShowPlugin();
+                }
+                else
+                {
+                    PluginWindow pw = new PluginWindow(iplugin);
+                    this.PluginWindows.Add(pw);
+                    this.pluginview.Children.Add(pw);
+                    pw.ShowPlugin();
                 }
             }
         }

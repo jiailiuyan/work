@@ -24,8 +24,8 @@ namespace NoteBookPlugin
     public partial class NoteBookControl : UserControl, IPluginObject
     {
 
-        ObservableCollection<string> content= new ObservableCollection<string>();
-    
+        ObservableCollection<string> content = new ObservableCollection<string>();
+
         private FrameworkElement pluginobject;
 
         public NoteBookControl()
@@ -37,9 +37,9 @@ namespace NoteBookPlugin
             content.Add("4 结算超时监控：   0笔 ");
             content.Add("5 脱机交易监控：   0笔 ");
             content.Add("6 自用油监控 ：   0笔  ");
-           this.listbox.ItemsSource = content;
-           // this.DataContext = this;
-          
+            this.listbox.ItemsSource = content;
+
+            pluginobject = this;
         }
 
         public string PluginName
@@ -49,7 +49,10 @@ namespace NoteBookPlugin
 
         public ImageSource PluginIcon
         {
-            get { return null; }
+            get
+            {
+                return new BitmapImage(new Uri("/NoteBookPlugin;component/Images/5.png", UriKind.Relative));
+            }
         }
 
         public FrameworkElement Plugin
@@ -63,5 +66,63 @@ namespace NoteBookPlugin
                 return pluginobject;
             }
         }
+
+        public PluginType Type
+        {
+            get { return PluginType.Plugin; }
+        }
+
+        public event EventHandler Closing;
+        protected void OnClosingChanged()
+        {
+            var d = this.GetHashCode();
+            if (this.Closing != null)
+            {
+                this.Closing(this, EventArgs.Empty);
+            }
+        }
+
+        public event EventHandler Opening;
+        protected void OpeningChanged()
+        {
+            if (this.Opening != null)
+            {
+                this.Opening(this, EventArgs.Empty);
+            }
+        }
+
+        public event EventHandler Hiding;
+        protected void HidingChanged()
+        {
+            if (this.Hiding != null)
+            {
+                this.Hiding(this, EventArgs.Empty);
+            }
+        }
+
+        public bool IsShow
+        {
+            get
+            {
+                return this.Visibility == System.Windows.Visibility.Visible;
+            }
+            set
+            {
+                if (value)
+                {
+                    OpeningChanged();
+                }
+                else
+                {
+                    HidingChanged();
+                }
+            }
+        }
+
+        private void close_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            OnClosingChanged();
+        }
+
     }
 }

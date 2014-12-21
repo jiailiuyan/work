@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:m="clr-namespace:DevComponents.WPF.Metro"
+                    xmlns:ctrls="clr-namespace:DevComponents.WPF.Controls;assembly=DevComponents.WPF.Controls">
+
+    <Style TargetType="m:Content3D">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:Content3D">
+                    <Grid Background="Transparent" ClipToBounds="False">
+                        <ctrls:Rectangle2D3D Name="Rectangle3D" Visibility="Hidden" Transform="{TemplateBinding Transform3D}" />
+                        <ContentPresenter Name="ContentPresenter" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

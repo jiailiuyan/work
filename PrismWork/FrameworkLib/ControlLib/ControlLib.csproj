@@ -70,7 +70,24 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\SPDragCanvas.cs" />
+    <Compile Include="Controls\DragControl\IncludeGrid.cs" />
+    <Compile Include="Controls\DragControl\ExceptGrid.cs" />
+    <Compile Include="Controls\DragControl\ISPDragIncludeControl.cs" />
+    <Compile Include="Controls\MultipleDragCanvas\BottomDragCanvas.cs" />
+    <Compile Include="Controls\MultipleDragCanvas\CanvasButton.xaml.cs">
+      <DependentUpon>CanvasButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MultipleDragCanvas\DragViewControl.xaml.cs">
+      <DependentUpon>DragViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MultipleDragCanvas\FrontDragCanvas.cs" />
+    <Compile Include="Controls\MultipleDragCanvas\IActionControl.cs" />
+    <Compile Include="Controls\MultipleDragCanvas\MultipleDragCanvas.xaml.cs">
+      <DependentUpon>MultipleDragCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MultipleDragCanvas\MultipleDragCanvasData.cs" />
+    <Compile Include="Controls\DragControl\SPDragCanvas.cs" />
+    <Compile Include="Controls\DragControl\ISPDragExceptControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,6 +116,24 @@
       <Project>{fd27de89-d16f-4b28-84b3-e5e2eeae0636}</Project>
       <Name>CommonHelper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\WorkCommon\WorkCommon.csproj">
+      <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
+      <Name>WorkCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\MultipleDragCanvas\CanvasButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MultipleDragCanvas\DragViewControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MultipleDragCanvas\MultipleDragCanvas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

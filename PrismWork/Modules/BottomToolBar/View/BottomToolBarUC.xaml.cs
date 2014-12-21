@@ -13,7 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WorkCommon.Behaviors;
+using WorkCommon.Events;
 using WorkCommon.Manager;
+using WorkCommon.Plugin;
 
 namespace Modules.BottomToolBar
 {
@@ -27,6 +29,13 @@ namespace Modules.BottomToolBar
         public BottomToolBarUC()
         {
             InitializeComponent();
+
+            this.Loaded += BottomToolBarUC_Loaded;
+        }
+
+        void BottomToolBarUC_Loaded(object sender, RoutedEventArgs e)
+        {
+            var a = this.DataContext;
         }
 
         [Import]
@@ -41,6 +50,20 @@ namespace Modules.BottomToolBar
                 this.DataContext = value;
             }
         }
+
+        private void pluginAction_Click(object sender, RoutedEventArgs e)
+        {
+            var control = sender as FrameworkElement;
+            if (control != null)
+            {
+                var po = control.DataContext as IPluginObject;
+                if (po != null)
+                {
+                    po.IsShow = !po.IsShow;
+                }
+            }
+        }
+
 
     }
 }

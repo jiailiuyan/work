@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:m="clr-namespace:DevComponents.WPF.Metro">
+
+    <DrawingBrush x:Key="ResizeGripForegroundBrush" Viewbox="0,0,3,3" Viewport="0,0,3,3" TileMode="Tile" ViewportUnits="Absolute" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Geometry="M 0,0 L 2,0 2,2 0,2 Z" Brush="{DynamicResource {x:Static m:MetroColors.BaseDarkerBrushKey}}" />
+                    <GeometryDrawing Geometry="F0 M 1,1 L 3,1 3,3 1,3 Z" Brush="#40FFFFFF" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="ResizeGripForegroundBrushSansStatusBar" Viewbox="0,0,3,3" Viewport="0,0,3,3" TileMode="Tile" ViewportUnits="Absolute" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Geometry="F0 M 0,0 L 2,0 2,2 0,2 Z" Brush="{DynamicResource {x:Static m:MetroColors.CanvasDarkBrushKey}}" />
+                    <GeometryDrawing Geometry="F0 M 1,1 L 3,1 3,3 1,3 Z" Brush="#40FFFFFF" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <Style x:Key="ResizeGripStyle" TargetType="ResizeGrip">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ResizeGrip}">
+                    <Grid SnapsToDevicePixels="true" Background="{TemplateBinding Background}">
+                        <Path Margin="0,0,2,2" Data="F0 M 9,0 L 12,0 12,12 0,12 0,9 3,9 3,6 6,6 6,3 9,3 Z" Fill="{TemplateBinding Foreground}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="m:MetroAppWindow">
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static m:MetroColors.TextBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static m:MetroColors.CanvasBrushKey}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static m:MetroColors.BaseBrushKey}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="m:MetroAppWindow">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid Margin="{TemplateBinding BorderThickness}">
+                            <AdornerDecorator>
+                                <ContentPresenter Margin="{TemplateBinding Padding}" />
+                            </AdornerDecorator>
+                            <ResizeGrip Name="ResizeGrip" Visibility="Collapsed" Style="{StaticResource ResizeGripStyle}" Foreground="{StaticResource ResizeGripForegroundBrush}" />
+                        </Grid>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                            <Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="ResizeGrip" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsActive" Value="False">
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static m:MetroColors.BaseLightBrushKey}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

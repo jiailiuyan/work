@@ -1,0 +1,218 @@
+﻿<ResourceDictionary
+    x:Class="DevComponents.WPF.Metro.CustomControlsResources"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ctrls="clr-namespace:DevComponents.WPF.Controls;assembly=DevComponents.WPF.Controls"
+    xmlns:m="clr-namespace:DevComponents.WPF.Metro">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Resources/CommonControlsResources.xaml" />        
+    </ResourceDictionary.MergedDictionaries>
+    
+    <sys:Double x:Key="{x:Static ctrls:Office2010UtilityScrollViewerStyle.ScrollBarSizeKey}">18</sys:Double>
+    
+    <!-- ColorControl -->
+
+    <Style x:Key="{x:Static ctrls:ColorControl.HorizontalSliderThumbStyleKey}" TargetType="Thumb">
+        <Setter Property="MinWidth" Value="10" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1,0" />
+        <Setter Property="Opacity" Value="0.9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static ctrls:ColorControl.VerticalSliderThumbStyleKey}" TargetType="Thumb">
+        <Setter Property="MinHeight" Value="10" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0,1" />
+        <Setter Property="Opacity" Value="0.9" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Brush Control -->
+    <Style x:Key="{x:Static ctrls:BrushControl.GradientStopsListBoxStyleKey}" TargetType="ListBox" BasedOn="{StaticResource {x:Static ctrls:BrushControl.GradientStopsListBoxStyleKey}}">
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="0,1" />
+    </Style>
+
+    <!-- Property Grid -->
+
+    <sys:Double x:Key="{x:Static ctrls:PropertyGrid.InnerLeftMarginKey}">18</sys:Double>
+    <Thickness x:Key="{x:Static ctrls:PropertyGrid.ToolBarPaddingKey}" Left="5" Top="3" Right="3" Bottom="3" />
+    <sys:Double x:Key="{x:Static ctrls:PropertyGrid.HelpPanelResizeThumbHeightKey}">5</sys:Double>
+    <Thickness x:Key="{x:Static ctrls:PropertyGrid.CategoryHeaderBorderThicknessKey}" Left="0" Top="0" Right="1" Bottom="1" />
+    <Thickness x:Key="{x:Static ctrls:PropertyGrid.CategoryHeaderPaddingKey}" Left="4" Top="2" Right="4" Bottom="2" />
+
+    <Style x:Key="TriangleExpanderStyle" TargetType="ToggleButton">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Padding" Value="3,6" />
+        <Setter Property="ClickMode" Value="Press" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Background="Transparent" Margin="0,0,-3,0" Padding="{TemplateBinding Padding}">
+                        <Polygon Name="Triangle" Margin="0,0,3,0" Points="0,6 6,0 6,6" Stretch="Uniform" RenderTransformOrigin="0.5,0.5"
+                                Stroke="{TemplateBinding Foreground}" Fill="{TemplateBinding Background}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="Triangle" Property="Fill" Value="Transparent" />
+                            <Setter TargetName="Triangle" Property="RenderTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-45" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Thickness x:Key="{x:Static ctrls:PropertyGridItem.CellPaddingKey}" Left="5" Top="2" Right="5" Bottom="3" />
+    <Style x:Key="{x:Static ctrls:AdvTreeNode.TriangleExpanderToggleButtonStyleKey}" TargetType="ToggleButton" BasedOn="{StaticResource TriangleExpanderStyle}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static m:MetroColors.TextInactiveBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static m:MetroColors.TextInactiveBrushKey}}" />
+    </Style>
+    <Style x:Key="{x:Static ctrls:PropertyGrid.GroupExpanderToggleButtonStyleKey}" TargetType="ToggleButton" BasedOn="{StaticResource TriangleExpanderStyle}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static m:MetroColors.CanvasBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static m:MetroColors.CanvasBrushKey}}" />
+    </Style>
+    <Style x:Key="{x:Static ctrls:PropertyGridItem.ExpanderToggleButtonStyleKey}" TargetType="ToggleButton" BasedOn="{StaticResource TriangleExpanderStyle}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static m:MetroColors.TextInactiveBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static m:MetroColors.TextInactiveBrushKey}}" />
+    </Style>
+    <Style x:Key="{x:Static ctrls:PropertyGridEditor.ToggleButtonStyleKey}" TargetType="ToggleButton" 
+           BasedOn="{StaticResource {x:Static ctrls:PropertyGridEditor.ToggleButtonStyleKey}}">
+        <Setter Property="Margin" Value="1" />
+    </Style>
+
+    <Style x:Key="{x:Static ctrls:PropertyGridEditor.DefaultDialogWindowEditorStyleKey}" TargetType="ctrls:PropertyGridEditor" 
+           BasedOn="{StaticResource {x:Static ctrls:PropertyGridEditor.DefaultDialogWindowEditorStyleKey}}">
+        <Setter Property="DialogWindowType" Value="{x:Type m:MetroDialogWindow}" />
+    </Style>
+
+    <Style x:Key="{x:Static ctrls:PropertyGridEditor.DefaultCollectionEditorStyleKey}" TargetType="ctrls:PropertyGridEditor" 
+           BasedOn="{StaticResource {x:Static ctrls:PropertyGridEditor.DefaultCollectionEditorStyleKey}}">
+        <Setter Property="DialogWindowType" Value="{x:Type m:MetroDialogWindow}" />
+    </Style>
+
+    <Style x:Key="{x:Static ctrls:PropertyGridEditor.TextBoxStyleKey}" TargetType="TextBox" 
+           BasedOn="{StaticResource {x:Static ctrls:PropertyGridEditor.TextBoxStyleKey}}">
+        <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static m:MetroColors.TextBrushKey}}" />
+    </Style>
+
+    <!-- Columns Presenter -->
+
+    <Thickness x:Key="{x:Static ctrls:ColumnsPresenter.PaddingKey}" Left="6" Top="3" Right="6" Bottom="3" />
+    <Thickness x:Key="{x:Static ctrls:ColumnPresenter.HeaderHighlightBorderThicknessKey}" Left="1" Top="0" Right="1" Bottom="0" />
+
+    <Style x:Key="{x:Static ctrls:ColumnsPresenter.ContextMenuItemStyleKey}" TargetType="{x:Type MenuItem}" 
+           BasedOn="{StaticResource {x:Static ctrls:ColumnsPresenter.ContextMenuItemStyleKey}}">
+        <Setter Property="Template" Value="{StaticResource {x:Static ctrls:MenuResources.MenuItemTemplateKey}}" />
+    </Style>
+    
+    <!-- AdvGrid -->
+
+    <DataTemplate x:Key="{x:Static ctrls:AdvGridRow.IsDirtyHeaderTemplateKey}">
+        <Path Stretch="None" Fill="{DynamicResource {x:Static m:MetroColors.BaseBrushKey}}">
+            <Path.Data>
+                <GeometryGroup>
+                    <RectangleGeometry Rect="0,0,4,9" />
+                    <RectangleGeometry Rect="0,11,4,3" />
+                </GeometryGroup>
+            </Path.Data>
+        </Path>
+    </DataTemplate>
+    
+    <!-- ADVTree -->
+
+    <Thickness x:Key="{x:Static ctrls:AdvTree.PaddingKey}" Left="0" Top="0" Right="0" Bottom="0" />
+    <Thickness x:Key="{x:Static ctrls:AdvGridCell.PaddingKey}" Left="5" Top="2" Right="5" Bottom="2" />
+    <Thickness x:Key="{x:Static ctrls:AdvTreeNode.PaddingKey}" Left="5" Top="2" Right="5" Bottom="2" />
+    <Thickness x:Key="{x:Static ctrls:AdvTreeCell.PaddingKey}" Left="5" Top="2" Right="5" Bottom="2" />
+    
+    <Style x:Key="{x:Static ctrls:AdvTreeNode.ContainedSelectionBoxBorderStyleKey}" TargetType="Border" 
+           BasedOn="{StaticResource {x:Static ctrls:AdvTreeNode.ContainedSelectionBoxBorderStyleKey}}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+    <Style x:Key="{x:Static ctrls:AdvTreeNode.ContainedHighlightBoxBorderStyleKey}" TargetType="Border" 
+           BasedOn="{StaticResource {x:Static ctrls:AdvTreeNode.ContainedHighlightBoxBorderStyleKey}}">
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+    <Style x:Key="{x:Static ctrls:AdvTreeCell.SelectionBoxBorderStyleKey}" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource {x:Static ctrls:AdvTreeCell.SelectionBoxBackgroundKey}}" />
+    </Style>
+    <Style x:Key="{x:Static ctrls:AdvTreeCell.HighlightBoxBorderStyleKey}" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource {x:Static ctrls:AdvTreeCell.HighlightBoxBackgroundKey}}" />
+    </Style>
+    <Style x:Key="{x:Static ctrls:AdvToolBar.OverflowToggleButtonStyleKey}" TargetType="ToggleButton" 
+           BasedOn="{StaticResource {x:Static ctrls:AdvToolBar.OverflowToggleButtonStyleKey}}">
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!-- EditingContentControl-->
+    <Thickness x:Key="{x:Static ctrls:EditingContentControl.EditingBorderThicknessKey}" Left="2" Top="2" Right="2" Bottom="2" />
+
+    <!-- Default style for the DialogWindow editor -->
+    <Style x:Key="{x:Static ctrls:EditingContentControl.DefaultDialogWindowEditorStyleKey}" TargetType="ctrls:EditingContentControl" 
+           BasedOn="{StaticResource {x:Static ctrls:EditingContentControl.DefaultDialogWindowEditorStyleKey}}">
+        <Setter Property="DialogWindowType" Value="{x:Type m:MetroDialogWindow}" />
+    </Style>
+
+    <Style x:Key="{x:Static ctrls:EditingContentControl.DefaultDataFormEditorStyleKey}" TargetType="ctrls:EditingContentControl" 
+           BasedOn="{StaticResource {x:Static ctrls:EditingContentControl.DefaultDataFormEditorStyleKey}}">
+        <Setter Property="DialogWindowType" Value="{x:Type m:MetroDialogWindow}" />
+    </Style>
+
+    <Style x:Key="{x:Static ctrls:EditingContentControl.DefaultCollectionEditorStyleKey}" TargetType="ctrls:EditingContentControl" 
+           BasedOn="{StaticResource {x:Static ctrls:EditingContentControl.DefaultCollectionEditorStyleKey}}">
+        <Setter Property="DialogWindowType" Value="{x:Type m:MetroDialogWindow}" />
+    </Style>
+
+    <Style x:Key="{x:Static ctrls:EditingContentControl.DropDownBorderStyleKey}" TargetType="Border">
+        <Setter Property="Margin" Value="0,0,5,5" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static m:MetroColors.CanvasDarkBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static m:MetroColors.CanvasBrushKey}}" />
+        <Setter Property="MinWidth" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}" />
+    </Style>
+
+    <!-- MISC. -->
+
+    <Style x:Key="{x:Static ctrls:PopupButton.PopupBorderStyleKey}" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource {x:Static ctrls:SelectorResources.DropDownBackgroundKey}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static ctrls:SelectorResources.DropDownBorderBrushKey}}" />
+    </Style>
+    
+    <Style TargetType="ctrls:SelectableItemBox">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static m:MetroColors.CanvasDarkBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static m:MetroColors.CanvasBrushKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static m:MetroColors.TextBrushKey}}" />
+    </Style>
+
+</ResourceDictionary>

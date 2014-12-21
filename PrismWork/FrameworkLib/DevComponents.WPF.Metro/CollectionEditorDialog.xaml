@@ -1,0 +1,25 @@
+﻿<m:MetroDialog x:Class="DevComponents.WPF.Metro.CollectionEditorDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="clr-namespace:DevComponents.WPF.Metro"
+        xmlns:ctrls="clr-namespace:DevComponents.WPF.Controls;assembly=DevComponents.WPF.Controls"
+        Height="450" Width="550"
+        Title="{Binding Name}">
+    
+    <m:MetroDialog.Chrome>
+        <m:MetroChrome FontWeight="Bold" ShowSystemMenu="False" />
+    </m:MetroDialog.Chrome>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ctrls:CollectionEditor x:Name="Editor" NewItemTypes="{Binding EditorDescriptor.NewItemTypes}" Collection="{Binding Value, Mode=TwoWay}" 
+                                CollectionType="{Binding PropertyType}" PropertyGridPropertyDefinitions="{Binding EditorDescriptor.PropertyGridPropertyDefinitions}" />
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Content="OK" Width="75" Command="Close" CommandParameter="Ok" />
+            <Button Margin="10,0,0,0" Width="75" Content="Cancel" Command="Close" CommandParameter="Cancel" />
+        </StackPanel>
+    </Grid>
+</m:MetroDialog>

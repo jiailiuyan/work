@@ -68,7 +68,6 @@ namespace WorkCommon.Plugin
                                 var ac = new AssemblyCatalog(type);
                                 foreach (var item in ac.Parts)
                                 {
-
                                     foreach (var ed in item.ExportDefinitions)
                                     {
                                         if (ed.ContractName.Equals(typeof(IPluginObject).FullName))
@@ -76,7 +75,11 @@ namespace WorkCommon.Plugin
                                             var po = item.CreatePart().GetExportedValue(ed) as IPluginObject;
                                             if (po != null)
                                             {
-                                                objectList.Add(po);
+                                               var ipo = po.Plugin as IPluginObject;
+                                               if (ipo != null)
+                                                {
+                                                    objectList.Add(ipo);
+                                                }
                                             }
                                         }
                                     }

@@ -1,0 +1,22 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroAppWindow.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroShell.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroChrome.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroStatusBar.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroToolBar.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroDialogWindow.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/QuickAccessToolBar.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroBackstage.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroTile.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroControl.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroStartPage.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroButton.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/MetroComboBox.generic.xaml" />
+        <ResourceDictionary Source="/DevComponents.WPF.Metro;component/Themes/Content3D.generic.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>
