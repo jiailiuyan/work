@@ -90,11 +90,12 @@ namespace Jisons
 
                 HttpWebResponse res = (HttpWebResponse)req.GetResponse();
 
-                var stream = res.GetResponseStream();
+                using (var stream = res.GetResponseStream())
                 {
                     //优化多线程内存流的释放
                     MemoryStream ms = new MemoryStream();
                     stream.CopyTo(ms);
+
                     //接收到的数据流需要重新设置读取起始位
                     ms.Position = 0;
 

@@ -45,6 +45,8 @@ namespace PrismWork
         {
             base.ConfigureAggregateCatalog();
 
+            GlobalManager.Instance.InitManager(this.AggregateCatalog);
+
             //导出自身程序集
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(this.GetType().Assembly));
 
@@ -52,16 +54,14 @@ namespace PrismWork
 
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(ImageViewUC).Assembly));
 
-
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(BottomToolBarUC).Assembly));
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(MainToolUC).Assembly));
-
-            GlobalManager.Instance.InitManager();
         }
 
         protected override DependencyObject CreateShell()
         {
             return (DependencyObject)this.Container.GetExportedValue<IShell>();
         }
+
     }
 }

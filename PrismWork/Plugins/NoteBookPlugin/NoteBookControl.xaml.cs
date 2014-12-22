@@ -25,9 +25,7 @@ namespace NoteBookPlugin
     {
 
         ObservableCollection<string> content = new ObservableCollection<string>();
-
-        private FrameworkElement pluginobject;
-
+         
         public NoteBookControl()
         {
             InitializeComponent();
@@ -40,6 +38,9 @@ namespace NoteBookPlugin
             this.listbox.ItemsSource = content;
 
             pluginobject = this;
+
+
+            //JI.Helper_Serializers.Instance.SerializeBinary(content);
         }
 
         public string PluginName
@@ -55,6 +56,7 @@ namespace NoteBookPlugin
             }
         }
 
+        private FrameworkElement pluginobject;
         public FrameworkElement Plugin
         {
             get

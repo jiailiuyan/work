@@ -51,30 +51,6 @@ namespace ControlLib
             this.frontcanvas.PreviewMouseLeftButtonUp += frontcanvas_PreviewMouseLeftButtonUp;
 
             this.bottomcanvas.PreviewMouseMove += bottomcanvas_PreviewMouseMove;
-
-            ContextMenu cmenu = new ContextMenu();
-
-            MenuItem menuItem = new MenuItem();
-            menuItem.Header = "名称排列";
-            menuItem.Click += menuItem_Click;
-
-            MenuItem menuItemAlign = new MenuItem();
-            menuItemAlign.Header = "对齐排列";
-            menuItemAlign.Click += menuItemAlign_Click;
-
-            cmenu.Items.Add(menuItem);
-            cmenu.Items.Add(menuItemAlign);
-            this.ContextMenu = cmenu;
-        }
-
-        void menuItemAlign_Click(object sender, RoutedEventArgs e)
-        {
-            this.bottomcanvas.AlignmentAllControls();
-        }
-
-        void menuItem_Click(object sender, RoutedEventArgs e)
-        {
-            this.bottomcanvas.OrderAllControls();
         }
 
         public void Test()
@@ -174,7 +150,11 @@ namespace ControlLib
             CanvasButton cb = new CanvasButton(iplugin);
             cb.AddEvent += cb_AddEvent;
             DragControls.Add(cb);
+
             this.bottomcanvas.Children.Add(cb.Element);
+
+            Canvas.SetLeft(cb.Element, 200);
+            Canvas.SetTop(cb.Element, 200);
         }
 
         void cb_AddEvent(object sender, EventArgs e)
@@ -288,7 +268,7 @@ namespace ControlLib
 
         public void AlignmentAllControls()
         {
-            this.AlignmentAllControls();
+            this.bottomcanvas.AlignmentAllControls();
         }
 
     }

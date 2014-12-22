@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WorkCommon.Manager;
 using WorkCommon.Manager.LayoutMgr;
+using WorkCommon.Updata;
 
 namespace PrismWork
 {
@@ -25,9 +27,18 @@ namespace PrismWork
         {
             InitializeComponent();
 
+
+            ManagerUpdata.Instance.WriteUpdataData();
+
             this.Loaded += Shell_Loaded;
 
             this.SizeChanged += Shell_SizeChanged;
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            GlobalEvent.Instance.RaiseProjectChange(new WorkCommon.Events.ProjectEventArgs() { Action = WorkCommon.Events.ProjectAction.Close });
         }
 
         void Shell_SizeChanged(object sender, SizeChangedEventArgs e)

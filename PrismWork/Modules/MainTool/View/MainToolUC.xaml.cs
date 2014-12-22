@@ -17,6 +17,7 @@ using WorkCommon.Manager;
 using Jisons;
 using WorkCommon.Plugin;
 using ControlLib;
+using WorkCommon.Updata;
 
 namespace Modules.MainTool
 {
@@ -53,6 +54,58 @@ namespace Modules.MainTool
             }
 
             this.actionview.AddControlEvent += actionview_AddControlEvent;
+
+            ContextMenu cmenu = new ContextMenu();
+
+            MenuItem menuItem = new MenuItem();
+            menuItem.Header = "名称排列";
+            menuItem.Click += menuItem_Click;
+
+            MenuItem menuItemAlign = new MenuItem();
+            menuItemAlign.Header = "对齐排列";
+            menuItemAlign.Click += menuItemAlign_Click;
+
+            MenuItem menuItemUpdata = new MenuItem();
+            menuItemUpdata.Header = "检查更新";
+            menuItemUpdata.Click += menuItemUpdata_Click;
+
+            cmenu.Items.Add(menuItemUpdata);
+            cmenu.Items.Add(menuItem);
+            cmenu.Items.Add(menuItemAlign);
+            this.ContextMenu = cmenu;
+
+            //this.ViewModel.PluginObjects.CollectionChanged += PluginObjects_CollectionChanged;
+        }
+
+
+        void menuItemUpdata_Click(object sender, RoutedEventArgs e)
+        {
+            var data = ManagerUpdata.Instance.DownUpdataData();
+            if (data != null)
+            {
+                var dll = data.DllDatas.FirstOrDefault();
+                MessageBox.Show("发现插件（自动下载）：" + dll.Name + "  " + dll.Description);
+                var ips = ManagerUpdata.Instance.DownPlugins();
+                if (ips != null && ips.Count > 0)
+                {
+                    foreach (var item in ips)
+                    {
+                        actionview.AddDragControl(item);
+                        this.ViewModel.PluginObjects.Add(item);
+                    }
+               //     this.actionview.AlignmentAllControls();
+                }
+            }
+        }
+
+        void menuItemAlign_Click(object sender, RoutedEventArgs e)
+        {
+            this.actionview.AlignmentAllControls();
+        }
+
+        void menuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.actionview.OrderAllControls();
         }
 
         void ItemsControl_SizeChanged(object sender, SizeChangedEventArgs e)

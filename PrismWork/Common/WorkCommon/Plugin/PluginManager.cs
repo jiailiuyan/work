@@ -7,11 +7,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using WorkCommon.Manager;
 
 namespace WorkCommon.Plugin
 {
     public class PluginManager
     {
+        public const string PluginsFloder = "Plugins";
 
         private static PluginManager instance;
         public static PluginManager Instance
@@ -39,10 +41,15 @@ namespace WorkCommon.Plugin
             }
         }
 
+
+        public string GetPlginsFloder()
+        {
+            return Path.Combine((new FileInfo(this.GetType().Assembly.Location)).Directory.FullName, PluginsFloder);
+        }
+
         public void LoadPlugin()
         {
-            var path = Path.Combine((new FileInfo(this.GetType().Assembly.Location)).Directory.FullName, "Plugins");
-            var plugindirecroty = new DirectoryInfo(path);
+            var plugindirecroty = new DirectoryInfo(GetPlginsFloder());
             if (plugindirecroty.Exists)
             {
                 var files = plugindirecroty.GetFiles().ToList();
@@ -64,7 +71,8 @@ namespace WorkCommon.Plugin
                                 !path.FullName.Contains("Microsoft")
                                 )
                             {
-                                var type = Assembly.LoadFile(path.FullName);
+                                bool isloaded = false;
+                                var type = Assembly.LoadFrom(path.FullName);
                                 var ac = new AssemblyCatalog(type);
                                 foreach (var item in ac.Parts)
                                 {
@@ -75,14 +83,19 @@ namespace WorkCommon.Plugin
                                             var po = item.CreatePart().GetExportedValue(ed) as IPluginObject;
                                             if (po != null)
                                             {
-                                               var ipo = po.Plugin as IPluginObject;
-                                               if (ipo != null)
+                                                var ipo = po.Plugin as IPluginObject;
+                                                if (ipo != null)
                                                 {
                                                     objectList.Add(ipo);
+                                                    isloaded = true;
                                                 }
                                             }
                                         }
                                     }
+                                }
+                                if (isloaded)
+                                {
+                                    InitPlugins(type);
                                 }
                             }
                         }
@@ -94,6 +107,11 @@ namespace WorkCommon.Plugin
                 }
                 return objectList;
             }
+        }
+
+        public void InitPlugins(Assembly assembly)
+        {
+            GlobalManager.Instance.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(assembly));
         }
 
         public static IEnumerable<Type> GetType(Type interfaceType)

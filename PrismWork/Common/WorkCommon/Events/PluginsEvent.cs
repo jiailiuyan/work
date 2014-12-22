@@ -9,7 +9,6 @@ namespace WorkCommon.Events
 
     public enum PluginAction
     {
-
         Add,
         Delete,
         Show,

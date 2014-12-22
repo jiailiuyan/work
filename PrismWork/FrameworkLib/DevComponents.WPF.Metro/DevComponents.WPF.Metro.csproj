@@ -244,12 +244,6 @@
     <None Include="DotNetBarWPFMetro.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DevComponents.WPF.Controls\DevComponents.WPF.Controls.csproj">
-      <Project>{BDC8B141-2B47-4F2E-9F94-4D22CB364C38}</Project>
-      <Name>DevComponents.WPF.Controls</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\MetroDefaultUser.png" />
   </ItemGroup>
   <ItemGroup>

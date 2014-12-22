@@ -52,6 +52,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.WPF.Controls, Version=7.5.0.6, Culture=neutral, PublicKeyToken=65042117d0a83cbc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Administrator\Desktop\DevComponents.WPF.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.WPF.Metro, Version=7.5.0.6, Culture=neutral, PublicKeyToken=335804e47774a7d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Administrator\Desktop\DevComponents.WPF.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
@@ -167,14 +175,6 @@
     <ProjectReference Include="..\..\FrameworkLib\ControlLib\ControlLib.csproj">
       <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
       <Name>ControlLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FrameworkLib\DevComponents.WPF.Controls\DevComponents.WPF.Controls.csproj">
-      <Project>{bdc8b141-2b47-4f2e-9f94-4d22cb364c38}</Project>
-      <Name>DevComponents.WPF.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FrameworkLib\DevComponents.WPF.Metro\DevComponents.WPF.Metro.csproj">
-      <Project>{37cac627-6bdb-42a2-9002-351c408002d4}</Project>
-      <Name>DevComponents.WPF.Metro</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Modules\BottomToolBar\BottomToolBar.csproj">
       <Project>{f900b75e-c0d5-495b-ac96-604471f048cf}</Project>

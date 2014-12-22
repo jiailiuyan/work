@@ -76,6 +76,19 @@ namespace Jisons
                 return ex.Message;
             }
         }
+
+        public static Stream WriteDataToStream<C>(this C obj) where C : class
+        {
+            try
+            {
+                return XmlAction.SaveStream(obj);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return null;
+        }
     }
 
     /// <summary> struct 类型进行读取时，不确保一定成功 如果读取不成功会返回 default(S) </summary>
@@ -116,7 +129,7 @@ namespace Jisons
         /// <param name="obj"></param>
         /// <param name="fullpath"> 写入的路径 </param>
         /// <returns> 返回为 null 的时候写入成功 </returns>
-        public static string WriteDataToXml<S>(this S obj, string fullpath) where S : struct
+        public static string WriteStructToXml<S>(this S obj, string fullpath) where S : struct
         {
             try
             {
@@ -152,6 +165,16 @@ namespace Jisons
                 }
             }
             catch { }
+        }
+
+        internal static Stream SaveStream(object obj)
+        {
+            MemoryStream stream = new MemoryStream();
+            StreamWriter writer = new StreamWriter(stream);
+            var xs = new XmlSerializer(obj.GetType());
+            xs.Serialize(writer, obj);
+            writer.Close();
+            return stream as Stream;
         }
 
         internal static object Read(string filePath, System.Type type)

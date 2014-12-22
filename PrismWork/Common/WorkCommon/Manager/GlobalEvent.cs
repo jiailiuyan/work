@@ -36,5 +36,11 @@ namespace WorkCommon.Manager
             this.EventAggregator.GetEvent<PluginsEvent>().Publish(args);
         }
 
+        public void RaiseProjectChange(ProjectEventArgs args)
+        {
+            this.EventAggregator.GetEvent<ProjectEvent>().Publish(args);
+        }
+
+
     }
 }

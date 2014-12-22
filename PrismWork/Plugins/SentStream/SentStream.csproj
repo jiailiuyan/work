@@ -1,31 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F900B75E-C0D5-495B-AC96-604471F048CF}</ProjectGuid>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{57F0B27B-B249-498B-BC0B-D41040556D8A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Modules.BottomToolBar</RootNamespace>
-    <AssemblyName>Modules.BottomToolBar</AssemblyName>
+    <RootNamespace>SentStream</RootNamespace>
+    <AssemblyName>SentStream</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\Debug\Plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,34 +40,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.WPF.Controls, Version=7.5.0.6, Culture=neutral, PublicKeyToken=65042117d0a83cbc, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Administrator\Desktop\DevComponents.WPF.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="DevComponents.WPF.Metro, Version=7.5.0.6, Culture=neutral, PublicKeyToken=335804e47774a7d8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Administrator\Desktop\DevComponents.WPF.Metro.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Interactivity">
@@ -72,12 +51,16 @@
     <Reference Include="Microsoft.Practices.Prism.MefExtensions">
       <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\PrismLib\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -91,23 +74,22 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\MenueUserControl.xaml">
+    <Compile Include="UDP\Helper.cs" />
+    <Compile Include="UDP\Helper_Cmd.cs" />
+    <Compile Include="UDP\Helper_Net.cs" />
+    <Page Include="SentStreamControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\BottomToolBarUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Include="Controls\MenueUserControl.xaml.cs">
-      <DependentUpon>MenueUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BottomToolBarUC.xaml.cs">
-      <DependentUpon>BottomToolBarUC.xaml</DependentUpon>
+    <Compile Include="UDP\Helper_Message.cs" />
+    <Compile Include="UDP\Helper_Serializers.cs" />
+    <Compile Include="UDP\Helper_Socket.cs" />
+    <Compile Include="SentStreamControl.xaml.cs">
+      <DependentUpon>SentStreamControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BottomToolBarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,26 +122,13 @@
       <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
       <Name>WorkCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLib\ControlLib\ControlLib.csproj">
+      <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
+      <Name>ControlLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\bottombar.png" />
-    <Resource Include="Images\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\11.png" />
-    <Resource Include="Images\22.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\m1.png" />
-    <Resource Include="Images\m2.png" />
-    <Resource Include="Images\m3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\s1.png" />
-    <Resource Include="Images\s2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\m4.png" />
+    <Resource Include="Images\23.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
