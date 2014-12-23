@@ -14,6 +14,10 @@ using System.Windows.Shapes;
 using WorkCommon.Manager;
 using WorkCommon.Manager.LayoutMgr;
 using WorkCommon.Updata;
+using Jisons;
+using System.Windows.Markup;
+using System.IO;
+using System.Xml;
 
 namespace PrismWork
 {
@@ -33,6 +37,7 @@ namespace PrismWork
             this.Loaded += Shell_Loaded;
 
             this.SizeChanged += Shell_SizeChanged;
+
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)

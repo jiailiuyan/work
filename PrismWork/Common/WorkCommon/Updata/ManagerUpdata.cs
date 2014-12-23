@@ -48,7 +48,7 @@ namespace WorkCommon.Updata
                 {
                     var url = testUrl + item.Name;
                     var file = Jisons.HttpHelper.GetStreamResponse(url);
-                    //File.Open(@"D:/SentStream.dll", FileMode.Open);
+
                     byte[] datas = new byte[file.Length];
                     file.Read(datas, 0, datas.Length);
 
@@ -56,11 +56,14 @@ namespace WorkCommon.Updata
                     var fileinfo = new FileInfo(path);
                     if (!(fileinfo).Exists)
                     {
-                        var f = File.Create(path);
-                        f.Write(datas, 0, datas.Length);
-                        f.Close();
-                        ips.AddRange(PluginManager.Instance.LoadAssembly(new List<FileInfo>() { fileinfo }));
+                        fileinfo.Delete();
                     }
+
+                    var f = File.Create(path);
+                    f.Write(datas, 0, datas.Length);
+                    f.Close();
+                    ips.AddRange(PluginManager.Instance.LoadAssembly(new List<FileInfo>() { fileinfo }));
+
                 }
             }
             return ips;

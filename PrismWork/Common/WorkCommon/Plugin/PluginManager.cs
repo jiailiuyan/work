@@ -28,6 +28,11 @@ namespace WorkCommon.Plugin
             }
         }
 
+        static PluginManager()
+        {
+            AppDomain.CurrentDomain.SetShadowCopyFiles();
+        }
+
         private ObservableCollection<IPluginObject> pluginObjects;
         public ObservableCollection<IPluginObject> PluginObjects
         {
@@ -40,7 +45,6 @@ namespace WorkCommon.Plugin
                 pluginObjects = value;
             }
         }
-
 
         public string GetPlginsFloder()
         {
