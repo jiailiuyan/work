@@ -326,5 +326,36 @@ namespace Jisons
         [DllImport("uxtheme.dll", CharSet = CharSet.Auto)]
         public static extern int GetCurrentThemeName(StringBuilder pszThemeFileName, int dwMaxNameChars, StringBuilder pszColorBuff, int dwMaxColorChars, StringBuilder pszSizeBuff, int cchMaxSizeChars);
 
+        const int SW_SHOWMAXIMIZED = 0x3;
+        const int SW_SHOWDEFAULT = 0xA;
+
+        [DllImport("user32.dll")]
+        public static extern int ShowWindow(IntPtr hwnd, int nCmdShow);
+
+        [DllImport("user32.dll")]
+        public static extern bool SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr FindWindow(string className, string Caption);
+
+        public static int ShowWindow(IntPtr hwnd)
+        {
+            ShowWindow(hwnd, SW_SHOWDEFAULT);
+            SetWindowPos(hwnd, 0, 0, 0, 0, 0, 3);
+            return 0;
+        }
+
+        public static IntPtr FineWindow(string Caption)
+        {
+            return FindWindow("", Caption);
+        }
+
+        public static string GetWindowText(IntPtr hWnd)
+        {
+            StringBuilder s = new StringBuilder(512);
+            int i = GetWindowText(hWnd, s, s.Capacity);
+            return s.ToString();
+        }
+
     }
 }
