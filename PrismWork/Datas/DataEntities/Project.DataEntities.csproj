@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6A755FE-79CC-4F45-BDC7-8655ABB6F41D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project.DataEntities</RootNamespace>
+    <AssemblyName>Project.DataEntities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessEntity.cs" />
+    <Compile Include="Log\Log_Login.cs" />
+    <Compile Include="Log\Log_Login.Designer.cs">
+      <DependentUpon>Log_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\Log_Operate.cs" />
+    <Compile Include="Log\Log_Operate.Designer.cs">
+      <DependentUpon>Log_Operate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\Log_SqlError.cs" />
+    <Compile Include="Log\Log_SqlError.Designer.cs">
+      <DependentUpon>Log_SqlError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys\Sys_BusiUnit.cs" />
+    <Compile Include="Sys\Sys_BusiUnit.designer.cs">
+      <DependentUpon>Sys_BusiUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_BusiUnitType.cs" />
+    <Compile Include="Sys\Sys_BusiUnitType.designer.cs">
+      <DependentUpon>Sys_BusiUnitType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_Modules.cs" />
+    <Compile Include="Sys\Sys_Modules.Designer.cs">
+      <DependentUpon>Sys_Modules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_Person.cs" />
+    <Compile Include="Sys\Sys_Person.designer.cs">
+      <DependentUpon>Sys_Person.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonBusiUnit.cs" />
+    <Compile Include="Sys\Sys_PersonBusiUnit.designer.cs">
+      <DependentUpon>Sys_PersonBusiUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonDeskTopConfig.cs" />
+    <Compile Include="Sys\Sys_PersonDeskTopConfig.Designer.cs">
+      <DependentUpon>Sys_PersonDeskTopConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonDeskTopIconSet.cs" />
+    <Compile Include="Sys\Sys_PersonDeskTopIconSet.Designer.cs">
+      <DependentUpon>Sys_PersonDeskTopIconSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_ProjInfo.cs" />
+    <Compile Include="Sys\Sys_ProjInfo.Designer.cs">
+      <DependentUpon>Sys_ProjInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_RoleModules.cs" />
+    <Compile Include="Sys\Sys_RoleModules.Designer.cs">
+      <DependentUpon>Sys_RoleModules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_Roles.cs" />
+    <Compile Include="Sys\Sys_Roles.Designer.cs">
+      <DependentUpon>Sys_Roles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_UserRole.cs" />
+    <Compile Include="Sys\Sys_UserRole.Designer.cs">
+      <DependentUpon>Sys_UserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValueText.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comm\Project.Comm.csproj">
+      <Project>{1adb6ace-02f0-40db-8599-1dc450137932}</Project>
+      <Name>Project.Comm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

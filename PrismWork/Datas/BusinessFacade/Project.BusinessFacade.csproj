@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8B981F9C-9DEB-4636-B14F-DB17300101B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project.BusinessFacade</RootNamespace>
+    <AssemblyName>Project.BusinessFacade</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusiFacade\BusiCommFacade.cs" />
+    <Compile Include="Log\Log_LoginFacade.cs" />
+    <Compile Include="Log\Log_LoginFacade.designer.cs">
+      <DependentUpon>Log_LoginFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\Log_OperateFacade.cs" />
+    <Compile Include="Log\Log_OperateFacade.Designer.cs">
+      <DependentUpon>Log_OperateFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\Log_SqlErrorFacade.cs" />
+    <Compile Include="Log\Log_SqlErrorFacade.Designer.cs">
+      <DependentUpon>Log_SqlErrorFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys\Sys_BusiUnitFacade.cs" />
+    <Compile Include="Sys\Sys_BusiUnitFacade.designer.cs">
+      <DependentUpon>Sys_BusiUnitFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_BusiUnitTypeFacade.cs" />
+    <Compile Include="Sys\Sys_BusiUnitTypeFacade.designer.cs">
+      <DependentUpon>Sys_BusiUnitTypeFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_ModulesFacade.cs" />
+    <Compile Include="Sys\Sys_ModulesFacade.Designer.cs">
+      <DependentUpon>Sys_ModulesFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonBusiUnitFacade.cs" />
+    <Compile Include="Sys\Sys_PersonBusiUnitFacade.designer.cs">
+      <DependentUpon>Sys_PersonBusiUnitFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonDeskTopConfigFacade.cs" />
+    <Compile Include="Sys\Sys_PersonDeskTopConfigFacade.Designer.cs">
+      <DependentUpon>Sys_PersonDeskTopConfigFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonDeskTopIconSetFacade.cs" />
+    <Compile Include="Sys\Sys_PersonDeskTopIconSetFacade.Designer.cs">
+      <DependentUpon>Sys_PersonDeskTopIconSetFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonFacade.cs" />
+    <Compile Include="Sys\Sys_PersonFacade.designer.cs">
+      <DependentUpon>Sys_PersonFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_ProjInfoFacade.cs" />
+    <Compile Include="Sys\Sys_ProjInfoFacade.Designer.cs">
+      <DependentUpon>Sys_ProjInfoFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_RoleModulesFacade.cs" />
+    <Compile Include="Sys\Sys_RoleModulesFacade.Designer.cs">
+      <DependentUpon>Sys_RoleModulesFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_RolesFacade.cs" />
+    <Compile Include="Sys\Sys_RolesFacade.Designer.cs">
+      <DependentUpon>Sys_RolesFacade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_UserRoleFacade.cs" />
+    <Compile Include="Sys\Sys_UserRoleFacade.designer.cs">
+      <DependentUpon>Sys_UserRoleFacade.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Comm\Project.Comm.csproj">
+      <Project>{1adb6ace-02f0-40db-8599-1dc450137932}</Project>
+      <Name>Project.Comm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccess\Project.DataAccess.csproj">
+      <Project>{2aba2f28-e29f-4bba-b304-bc925d3f3254}</Project>
+      <Name>Project.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEntities\Project.DataEntities.csproj">
+      <Project>{f6a755fe-79cc-4f45-bdc7-8655abb6f41d}</Project>
+      <Name>Project.DataEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

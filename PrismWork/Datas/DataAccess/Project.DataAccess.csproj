@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2ABA2F28-E29F-4BBA-B304-BC925D3F3254}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project.DataAccess</RootNamespace>
+    <AssemblyName>Project.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DBLib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DBLib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data.Extension, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DBLib\Microsoft.Practices.EnterpriseLibrary.Data.Extension.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DBLib\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DBLib\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseDAO.cs" />
+    <Compile Include="BusiDB\BusiBaseDAO.cs" />
+    <Compile Include="BusiDB\BusiCommDAO.cs" />
+    <Compile Include="DAOCommConfig.cs" />
+    <Compile Include="Log\Log_LoginDAO.cs" />
+    <Compile Include="Log\Log_LoginDAO.Designer.cs">
+      <DependentUpon>Log_LoginDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\Log_OperateDAO.cs" />
+    <Compile Include="Log\Log_OperateDAO.Designer.cs">
+      <DependentUpon>Log_OperateDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\Log_SqlErrorDAO.cs" />
+    <Compile Include="Log\Log_SqlErrorDAO.Designer.cs">
+      <DependentUpon>Log_SqlErrorDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys\Sys_BusiUnitDAO.cs" />
+    <Compile Include="Sys\Sys_BusiUnitDAO.designer.cs">
+      <DependentUpon>Sys_BusiUnitDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_BusiUnitTypeDAO.cs" />
+    <Compile Include="Sys\Sys_BusiUnitTypeDAO.designer.cs">
+      <DependentUpon>Sys_BusiUnitTypeDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_ModulesDAO.cs" />
+    <Compile Include="Sys\Sys_ModulesDAO.Designer.cs">
+      <DependentUpon>Sys_ModulesDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonBusiUnitDAO.cs" />
+    <Compile Include="Sys\Sys_PersonBusiUnitDAO.designer.cs">
+      <DependentUpon>Sys_PersonBusiUnitDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonDAO.cs" />
+    <Compile Include="Sys\Sys_PersonDAO.designer.cs">
+      <DependentUpon>Sys_PersonDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonDeskTopConfigDAO.cs" />
+    <Compile Include="Sys\Sys_PersonDeskTopConfigDAO.Designer.cs">
+      <DependentUpon>Sys_PersonDeskTopConfigDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_PersonDeskTopIconSetDAO.cs" />
+    <Compile Include="Sys\Sys_PersonDeskTopIconSetDAO.Designer.cs">
+      <DependentUpon>Sys_PersonDeskTopIconSetDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_ProjInfoDAO.cs" />
+    <Compile Include="Sys\Sys_ProjInfoDAO.Designer.cs">
+      <DependentUpon>Sys_ProjInfoDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_RoleModulesDAO.cs" />
+    <Compile Include="Sys\Sys_RoleModulesDAO.Designer.cs">
+      <DependentUpon>Sys_RoleModulesDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_RolesDAO.cs" />
+    <Compile Include="Sys\Sys_RolesDAO.Designer.cs">
+      <DependentUpon>Sys_RolesDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\Sys_UserRoleDAO.cs" />
+    <Compile Include="Sys\Sys_UserRoleDAO.Designer.cs">
+      <DependentUpon>Sys_UserRoleDAO.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DBLib\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="DBLib\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
+    <Content Include="DBLib\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="DBLib\Microsoft.Practices.EnterpriseLibrary.Data.Extension.dll" />
+    <Content Include="DBLib\Microsoft.Practices.EnterpriseLibrary.Data.xml" />
+    <Content Include="DBLib\Microsoft.Practices.ObjectBuilder2.dll" />
+    <Content Include="DBLib\Microsoft.Practices.Unity.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Comm\Project.Comm.csproj">
+      <Project>{1adb6ace-02f0-40db-8599-1dc450137932}</Project>
+      <Name>Project.Comm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEntities\Project.DataEntities.csproj">
+      <Project>{f6a755fe-79cc-4f45-bdc7-8655abb6f41d}</Project>
+      <Name>Project.DataEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
