@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="WpfApplication9.MenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <Image Width="40" Source="{Binding Icon}" />
+            <Button Width="40" Content="{Binding MenuTitle}" Height="20" Click="open_Click" />
+            <Popup x:Name="popupcontrol" 
+                   Width="{Binding PopupWidth}"
+                   Height="{Binding PopupHeight}">
+                <ContentPresenter Content="{Binding PopupContent}" />
+            </Popup>
+        </StackPanel>
+    </Grid>
+</UserControl>
