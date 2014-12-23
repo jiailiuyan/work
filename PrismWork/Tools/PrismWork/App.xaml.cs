@@ -4,6 +4,9 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using System.Windows.Interop;
+using CommonHelper.Helpers;
+using WorkCommon.Manager;
 
 namespace PrismWork
 {
@@ -12,13 +15,39 @@ namespace PrismWork
     /// </summary>
     public partial class App : Application
     {
-
+        public static MemoryMappedFileHelper<EditMemoryFile> EditMemory = new MemoryMappedFileHelper<EditMemoryFile>("PrismWork");
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
+            if (this.MainWindow != null)
+            {
+                this.MainWindow.SourceInitialized += MainWindow_SourceInitialized;
+            }
+
             App.RunMode();
+        }
+
+        void MainWindow_SourceInitialized(object sender, EventArgs e)
+        {
+            var window = sender as Window;
+            if (window != null && App.EditMemory != null)
+            {
+                IntPtr hwnd = new WindowInteropHelper(window).Handle;
+                EditMemoryFile editMomoryFile = EditMemory.LoadMemoryFile();
+            }
+            //Editor.ControlLib.OpenEdiotr.EdiotrHelper.ShowWindow(newEditFile.Handle);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            if (EditMemory != null)
+            {
+                EditMemory.DisposeMemoryMappedFile();
+            }
+
+            base.OnExit(e);
         }
 
         static void RunMode()
@@ -31,6 +60,10 @@ namespace PrismWork
             }
             catch (Exception exception)
             {
+                if (exception != null)
+                {
+                    GlobalLog.Logger.Info("Process Over... ", exception);
+                }
                 Application.Current.Dispatcher.InvokeShutdown();
             }
         }
@@ -40,7 +73,7 @@ namespace PrismWork
             var exception = e.ExceptionObject as Exception;
             if (exception != null)
             {
-
+                GlobalLog.Logger.Error("Process Over... ", exception);
             }
             Application.Current.Dispatcher.InvokeShutdown();
         }

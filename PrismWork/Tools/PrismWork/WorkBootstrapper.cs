@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using ImageView;
+using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.MefExtensions;
 using Microsoft.Practices.ServiceLocation;
 using Modules.BottomToolBar;
@@ -17,6 +18,10 @@ namespace PrismWork
 {
     public class WorkBootstrapper : MefBootstrapper
     {
+        /// <summary>
+        /// 对日志组件的包装类
+        /// </summary>
+        private readonly LoggerWarp loggerWarp = new LoggerWarp();
 
         /// <summary> 用于加载起始页面、设置主窗体 </summary>
         protected override void InitializeShell()
@@ -40,6 +45,11 @@ namespace PrismWork
             return factory;
         }
 
+        protected override Microsoft.Practices.Prism.Logging.ILoggerFacade CreateLogger()
+        {
+            return loggerWarp;
+        }
+
         /// <summary> 导入使用的插件 </summary>
         protected override void ConfigureAggregateCatalog()
         {
@@ -60,7 +70,15 @@ namespace PrismWork
 
         protected override DependencyObject CreateShell()
         {
-            return (DependencyObject)this.Container.GetExportedValue<IShell>();
+            try
+            {
+                return (DependencyObject)this.Container.GetExportedValue<IShell>();
+            }
+            catch (System.Exception ex)
+            {
+                loggerWarp.Log(ex.ToString(), Category.Exception, Priority.High);
+                return null;
+            }
         }
 
     }

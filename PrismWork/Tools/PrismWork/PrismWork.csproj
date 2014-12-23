@@ -172,6 +172,10 @@
       <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
       <Name>WorkCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Datas\BusinessFacade\Project.BusinessFacade.csproj">
+      <Project>{8b981f9c-9deb-4636-b14f-db17300101b8}</Project>
+      <Name>Project.BusinessFacade</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FrameworkLib\ControlLib\ControlLib.csproj">
       <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
       <Name>ControlLib</Name>

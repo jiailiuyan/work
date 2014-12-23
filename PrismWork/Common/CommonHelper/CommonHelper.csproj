@@ -79,6 +79,7 @@
     <Compile Include="Helpers\IEnumerableHelper.cs" />
     <Compile Include="Helpers\IListHelper.cs" />
     <Compile Include="Helpers\MD5Helper.cs" />
+    <Compile Include="Helpers\MemoryMappedFileHelper.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Helpers\SwitchHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />

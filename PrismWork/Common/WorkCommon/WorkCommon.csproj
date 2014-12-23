@@ -48,6 +48,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\PrismLib\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
@@ -79,10 +82,15 @@
     <Compile Include="Events\PluginsEvent.cs" />
     <Compile Include="Events\ProjectEvent.cs" />
     <Compile Include="Manager\GlobalEvent.cs" />
+    <Compile Include="Manager\GlobalLog.cs" />
     <Compile Include="Manager\GlobalManager.cs" />
     <Compile Include="Manager\LayoutMgr\ILayoutManager.cs" />
     <Compile Include="Manager\LayoutMgr\IShell.cs" />
     <Compile Include="Manager\LayoutMgr\LayoutManager.cs" />
+    <Compile Include="Manager\Log\CSLogger.cs" />
+    <Compile Include="Manager\Log\ICSLog.cs" />
+    <Compile Include="Manager\Log\Log4Wrap.cs" />
+    <Compile Include="Manager\Log\LoggerWarp.cs" />
     <Compile Include="Manager\RegionNames.cs" />
     <Compile Include="Plugin\IPluginObject.cs" />
     <Compile Include="Plugin\PluginManager.cs" />

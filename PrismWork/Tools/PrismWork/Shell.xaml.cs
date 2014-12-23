@@ -18,6 +18,7 @@ using Jisons;
 using System.Windows.Markup;
 using System.IO;
 using System.Xml;
+using Project.BusinessFacade;
 
 namespace PrismWork
 {
@@ -38,6 +39,8 @@ namespace PrismWork
 
             this.SizeChanged += Shell_SizeChanged;
 
+            //BusiCommFacade bcf = new BusiCommFacade();
+            //var a = bcf.GetUsingOilStation();
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)

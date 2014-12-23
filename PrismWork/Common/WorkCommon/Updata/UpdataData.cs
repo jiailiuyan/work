@@ -26,6 +26,8 @@ namespace WorkCommon.Updata
         public string Description { get; set; }
 
         public string Version { get; set; }
+
+        public string MD5 { get; set; }
     }
 
 }
