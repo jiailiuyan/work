@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApplication9
+namespace ControlLib
 {
     /// <summary>
     /// MenuControl.xaml 的交互逻辑
@@ -37,13 +37,13 @@ namespace WpfApplication9
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(ImageSource), typeof(MenuControl), new PropertyMetadata(null));
 
-        public UIElement PopupContent
+        public FrameworkElement PopupContent
         {
-            get { return (UIElement)GetValue(PopupContentProperty); }
+            get { return (FrameworkElement)GetValue(PopupContentProperty); }
             set { SetValue(PopupContentProperty, value); }
         }
         public static readonly DependencyProperty PopupContentProperty =
-            DependencyProperty.Register("PopupContent", typeof(UIElement), typeof(MenuControl), new PropertyMetadata(null));
+            DependencyProperty.Register("PopupContent", typeof(FrameworkElement), typeof(MenuControl), new PropertyMetadata(null));
 
         public bool IsOpen
         {
@@ -51,7 +51,7 @@ namespace WpfApplication9
             set { SetValue(IsOpenProperty, value); }
         }
         public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(MenuControl), new PropertyMetadata(false));
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(MenuControl), new PropertyMetadata(false, IsOpenChangedCallback));
 
         public double PopupWidth
         {
@@ -83,15 +83,13 @@ namespace WpfApplication9
             set { SetValue(OffsetYProperty, value); }
         }
         public static readonly DependencyProperty OffsetYProperty =
-            DependencyProperty.Register("OffsetY", typeof(double), typeof(MenuControl), new PropertyMetadata(0d));
+            DependencyProperty.Register("OffsetY", typeof(double), typeof(MenuControl), new PropertyMetadata(1d));
 
         public MenuControl()
         {
             InitializeComponent();
 
-            this.popupcontrol.HorizontalOffset = 100;
-            this.popupcontrol.VerticalOffset = -100;
-            this.popupcontrol.IsOpen = true;
+            this.popupcontrol.IsOpen = false;
             this.popupcontrol.AllowsTransparency = true;
 
             this.popupcontrol.PopupAnimation = PopupAnimation.Fade;
@@ -101,21 +99,50 @@ namespace WpfApplication9
             this.Loaded += MenuControl_Loaded;
 
             this.popupcontrol.Opened += popupcontrol_Opened;
-
-            Grid g = new Grid();
-            g.Width = 200;
-            g.Height = 200;
-            g.Background = new SolidColorBrush(Color.FromArgb(50, 200, 150, 2));
-            this.PopupContent = g;
+            this.popupcontrol.Closed += popupcontrol_Closed;
+            //Grid g = new Grid();
+            //g.Width = 200;
+            //g.Height = 200;
+            //g.Background = new SolidColorBrush(Color.FromArgb(50, 200, 150, 2));
+            //this.PopupContent = g;
 
             this.DataContext = this;
         }
 
+        static void IsOpenChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as MenuControl;
+            if ((bool)e.NewValue)
+            {
+                if (!control.popupcontrol.IsOpen)
+                {
+                    control.popupcontrol.IsOpen = true;
+                }
+            }
+            else
+            {
+                if (control.popupcontrol.IsOpen)
+                {
+                    control.popupcontrol.IsOpen = false;
+                }
+            }
+        }
+
         void popupcontrol_Opened(object sender, EventArgs e)
         {
+            if (!IsOpen)
+            {
+                IsOpen = true;
+            }
+            ResetLocation();
+        }
 
-            this.popupcontrol.HorizontalOffset = -150;
-            this.popupcontrol.VerticalOffset = -200;
+        void popupcontrol_Closed(object sender, EventArgs e)
+        {
+            if (IsOpen)
+            {
+                IsOpen = false;
+            }
         }
 
         void MenuControl_Loaded(object sender, RoutedEventArgs e)
@@ -130,16 +157,15 @@ namespace WpfApplication9
 
         private void open_Click(object sender, RoutedEventArgs e)
         {
-            if (IsOpen)
-            {
-                this.popupcontrol.IsOpen = false;
-                IsOpen = false;
-            }
-            else
-            {
-                this.popupcontrol.IsOpen = true;
-                IsOpen = true;
-            }
+            IsOpen = !IsOpen;
         }
+
+        public void ResetLocation()
+        {
+            this.popupcontrol.HorizontalOffset = OffsetX;
+            this.popupcontrol.VerticalOffset = -this.PopupContent.ActualHeight - this.ActualHeight - OffsetY;
+
+        }
+
     }
 }

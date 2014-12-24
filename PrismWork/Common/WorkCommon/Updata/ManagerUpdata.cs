@@ -24,13 +24,13 @@ namespace WorkCommon.Updata
             }
         }
 
-        public void WriteUpdataData()
+        public void WriteLocationData()
         {
-            UpdataData data = new UpdataData();
+            //UpdataData data = new UpdataData();
 
-            data.DllDatas.Add(new DllData() { Version = "1.0.0.0", Name = "SentStream.dll", Description = "即时通讯", Path = "plugin/SentStream.dll" });
+            //data.PluginDatas.Add(new PluginData() { Version = "1.0.0.0", Name = "SentStream.dll", Description = "即时通讯", Path = "plugin/SentStream.dll" });
 
-            data.WriteDataToXml<UpdataData>(@"D:/1.xml");
+             //data.WriteDataToXml<UpdataData>(@"D:/1.xml");
         }
 
         public void CheckUpdata()
@@ -44,7 +44,7 @@ namespace WorkCommon.Updata
             var dud = DownUpdataData();
             if (dud != null)
             {
-                foreach (var item in dud.DllDatas)
+                foreach (var item in dud.PluginDatas)
                 {
                     var url = testUrl + item.Name;
                     var file = Jisons.HttpHelper.GetStreamResponse(url);

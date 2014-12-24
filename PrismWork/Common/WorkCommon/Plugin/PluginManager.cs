@@ -8,12 +8,16 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using WorkCommon.Manager;
+using WorkCommon.Updata;
+using Jisons;
 
 namespace WorkCommon.Plugin
 {
     public class PluginManager
     {
         public const string PluginsFloder = "Plugins";
+
+        public const string LocationPluginsFile = "LocationPlugins";
 
         private static PluginManager instance;
         public static PluginManager Instance
@@ -46,12 +50,15 @@ namespace WorkCommon.Plugin
             }
         }
 
+        public List<UpdataData> LocationPlugins = new List<UpdataData>();
+
+
         public string GetPlginsFloder()
         {
             return Path.Combine((new FileInfo(this.GetType().Assembly.Location)).Directory.FullName, PluginsFloder);
         }
 
-        public void LoadPlugin()
+        public void LoadPlugin(bool checkplugins = false)
         {
             var plugindirecroty = new DirectoryInfo(GetPlginsFloder());
             if (plugindirecroty.Exists)
@@ -61,7 +68,7 @@ namespace WorkCommon.Plugin
             }
         }
 
-        public List<IPluginObject> LoadAssembly(List<FileInfo> fileList)
+        internal List<IPluginObject> LoadAssembly(List<FileInfo> fileList, bool checkplugins = false)
         {
             List<IPluginObject> objectList = new List<IPluginObject>();
             {
@@ -71,10 +78,13 @@ namespace WorkCommon.Plugin
                     {
                         try
                         {
-                            if ((path.FullName.EndsWith(".dll") || path.FullName.EndsWith(".exe")) &&
-                                !path.FullName.Contains("Microsoft")
-                                )
+                            if ((path.FullName.EndsWith(".dll") || path.FullName.EndsWith(".exe")))
                             {
+                                if (checkplugins)
+                                {
+
+                                }
+
                                 bool isloaded = false;
                                 var type = Assembly.LoadFrom(path.FullName);
                                 var ac = new AssemblyCatalog(type);
@@ -113,7 +123,7 @@ namespace WorkCommon.Plugin
             }
         }
 
-        public void InitPlugins(Assembly assembly)
+        private void InitPlugins(Assembly assembly)
         {
             GlobalManager.Instance.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(assembly));
         }
@@ -134,6 +144,11 @@ namespace WorkCommon.Plugin
                     }
                 }
             }
+        }
+
+        public void WriteLocationData()
+        {
+            LocationPlugins.WriteDataToXml(Path.Combine(GetPlginsFloder(), LocationPluginsFile));
         }
 
     }

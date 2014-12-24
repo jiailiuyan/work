@@ -55,14 +55,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.WPF.Controls, Version=7.5.0.6, Culture=neutral, PublicKeyToken=65042117d0a83cbc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Administrator\Desktop\DevComponents.WPF.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="DevComponents.WPF.Metro, Version=7.5.0.6, Culture=neutral, PublicKeyToken=335804e47774a7d8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Administrator\Desktop\DevComponents.WPF.Metro.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
@@ -139,6 +131,10 @@
     <ProjectReference Include="..\..\Common\WorkCommon\WorkCommon.csproj">
       <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
       <Name>WorkCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FrameworkLib\ControlLib\ControlLib.csproj">
+      <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
+      <Name>ControlLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

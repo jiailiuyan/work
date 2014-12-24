@@ -7,16 +7,15 @@ namespace WorkCommon.Updata
 {
     public class UpdataData
     {
-        public List<DllData> DllDatas { get; set; }
+        public List<PluginData> PluginDatas { get; set; }
 
         public UpdataData()
         {
-            DllDatas = new List<DllData>();
+            PluginDatas = new List<PluginData>();
         }
-
     }
 
-    public class DllData
+    public class PluginData
     {
 
         public string Name { get; set; }
@@ -28,6 +27,8 @@ namespace WorkCommon.Updata
         public string Version { get; set; }
 
         public string MD5 { get; set; }
+
+        public bool IsLocal { get; set; }
     }
 
 }

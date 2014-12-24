@@ -83,7 +83,7 @@ namespace Modules.MainTool
             var data = ManagerUpdata.Instance.DownUpdataData();
             if (data != null)
             {
-                var dll = data.DllDatas.FirstOrDefault();
+                var dll = data.PluginDatas.FirstOrDefault();
                 MessageBox.Show("发现插件（自动下载）：" + dll.Name + "  " + dll.Description);
                 var ips = ManagerUpdata.Instance.DownPlugins();
                 if (ips != null && ips.Count > 0)

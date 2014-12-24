@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Bundle Name="BootstrapperSetup" Version="1.0.0.0" Manufacturer="Microsoft" UpgradeCode="92ab8092-6982-4cb8-9e76-9c3e1afe4f8d">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+
+    <Chain>
+
+      <ExePackage Id="Netfx4Full"
+             Cache="no"
+             Compressed="yes"
+             PerMachine="yes"
+             Permanent="yes"
+             Vital="yes" InstallCommand=" /q /norestart"
+             SourceFile="dotNetFx40_Full_x86_x64.exe"
+             DownloadUrl="http://go.microsoft.com/fwlink/?LinkId=164193"
+             DetectCondition="DotNetFramework40FullInstallRegValue=1" />
+
+      <MsiPackage SourceFile="$(var.SetupProject.TargetPath)" />
+
+    </Chain>
+  </Bundle>
+</Wix>

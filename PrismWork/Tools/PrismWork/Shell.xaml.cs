@@ -32,8 +32,7 @@ namespace PrismWork
         {
             InitializeComponent();
 
-
-            ManagerUpdata.Instance.WriteUpdataData();
+            //ManagerUpdata.Instance.WriteUpdataData();
 
             this.Loaded += Shell_Loaded;
 

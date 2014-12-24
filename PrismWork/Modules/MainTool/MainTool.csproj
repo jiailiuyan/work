@@ -145,10 +145,6 @@
       <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
       <Name>ControlLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Plugins\ModuleManagement\ModuleManagement.csproj">
-      <Project>{f24ab598-4715-4ab8-bdf7-44d73cf843db}</Project>
-      <Name>ModuleManagement</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ask.png" />
